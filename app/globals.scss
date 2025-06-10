@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+// Import custom fonts
+@font-face {
+  font-family: "Bankside Sans Ex Trial";
+  src: url("/fonts/BanksideSansEx_Trial_SBd.ttf") format("ttf");
+  //  url('/fonts/YourFontName.woff') format('woff');
+  font-style: normal;
+  font-weight: 600;
+  // font-display: swap;
+}
+
+@font-face {
+  font-family: Medium;
+  src: url("/fonts/Medium.otf") format("otf");
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --charcoalBlack: #0a0e0c;
+  --brightRed: #ff0000;
+  --darkRed: #7b0008;
+  --red: #a41720;
+  --fontPrimary: "Bankside Sans Ex Trial", sans-serif;
+  --fontSecondary: Medium, sans-serif;
+}
+
+body {
+  background: var(--charcoalBlack);
+  background: color(display-p3 0.0392 0.0549 0.0471);
+  color: var(--white);
+  font-family: var(--fontSecondary), sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
