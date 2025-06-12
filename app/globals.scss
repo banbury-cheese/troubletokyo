@@ -2,17 +2,17 @@
 
 // Import custom fonts
 @font-face {
-  font-family: "Bankside Sans Ex Trial";
-  src: url("/fonts/BanksideSansEx_Trial_SBd.ttf") format("ttf");
-  //  url('/fonts/YourFontName.woff') format('woff');
+  font-family: "Bankside";
+  src: url(/fonts/BanksideSansEx_Trial_SBd.woff2) format("woff2"),
+       url(/fonts/BanksideSansEx_Trial_SBd.woff) format("woff");
   font-style: normal;
   font-weight: 600;
-  // font-display: swap;
 }
 
 @font-face {
   font-family: Medium;
-  src: url("/fonts/Medium.otf") format("otf");
+  src: url(/fonts/Medium.woff2) format("woff2"),
+       url(/fonts/Medium.woff) format("woff");
   font-style: normal;
   font-weight: 400;
 }
@@ -24,8 +24,8 @@
   --brightRed: #ff0000;
   --darkRed: #7b0008;
   --red: #a41720;
-  --fontPrimary: "Bankside Sans Ex Trial", sans-serif;
-  --fontSecondary: Medium, sans-serif;
+  --fontPrimary: "Bankside", sans-serif;
+  --fontSecondary: "Medium", sans-serif;
 }
 
 body {
