@@ -10,6 +10,14 @@
 }
 
 @font-face {
+  font-family: "Bankside SemiEx";
+  src: url(/fonts/BanksideSansSemiEx_Trial_Rg.woff2) format("woff2"),
+       url(/fonts/BanksideSansSemiEx_Trial_Rg.woff) format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
   font-family: Medium;
   src: url(/fonts/Medium.woff2) format("woff2"),
        url(/fonts/Medium.woff) format("woff");

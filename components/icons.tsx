@@ -44,3 +44,41 @@ export const SoundOffIcon = () => (
     />
   </svg>
 );
+
+export const BackIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="105"
+    height="83"
+    viewBox="0 0 105 83"
+    fill="none"
+  >
+    <g clipPath="url(#clip0_334_176)">
+      <path
+        d="M104.042 0.958603H0.964844V82.0482H104.042V0.958603Z"
+        fill="#A41720"
+        stroke="white"
+        style={{fill:'#A41720', fillOpacity:1, stroke:'white', strokeOpacity:1}}
+        strokeWidth="2.83"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M15.6271 36.2176H4.12427L26.6 63.1259L54.2123 36.7509H43.5927C43.7082 35.2185 41.7175 22.5001 50.7268 22.5946C59.4983 22.6149 58.5878 36.7104 58.5878 36.7104L59.6681 77.0594L100.203 77.7479L84.3724 24.3363C83.8696 22.5879 77.5033 9.0392 64.6892 8.43839H36.8119C15.1447 8.0671 15.8989 35.2792 15.6339 36.2108L15.6271 36.2176Z"
+        fill="white"
+        stroke="white"
+        style={{fill:'white', fillOpacity:1, stroke:'white', strokeOpacity:1}}
+        strokeMiterlimit="10"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_334_176">
+        <rect
+          width="105"
+          height="83"
+          fill="white"
+          style={{fill:'white', fillOpacity:1}}
+        />
+      </clipPath>
+    </defs>
+  </svg>
+);

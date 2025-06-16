@@ -4,8 +4,9 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.scss";
-import { Logo, FooterLogo } from "@/components/logo";
+import { Logo } from "@/components/logo";
 import { SoundOnIcon, SoundOffIcon } from "@/components/icons";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   const [isMuted, setIsMuted] = useState(true);
@@ -57,7 +58,7 @@ export default function Home() {
       {/* Navigation Sections */}
       <div className={styles.sectionsGrid}>
         {/* Apparel Section */}
-        <Link href="/products" className={styles.section}>
+        <Link href="/apparels" className={styles.section}>
           <div className={styles.sectionContent}>
             <h2 className={styles.sectionTitle}>APPAREL</h2>
           </div>
@@ -105,32 +106,11 @@ export default function Home() {
             alt="About background"
             fill
             className={styles.sectionBg}
-          />{" "}
+          />
         </Link>
       </div>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerLeft}>
-            <FooterLogo />
-          </div>
-          <div className={styles.footerRight}>
-            <Link href="/contact" className={styles.footerLink}>
-              CONTACT
-            </Link>
-            <Link href="/instagram" className={styles.footerLink}>
-              INSTAGRAM
-            </Link>
-            <Link href="/media" className={styles.footerLink}>
-              MEDIA
-            </Link>
-            <Link href="/culture" className={styles.footerLink}>
-              CULTURE
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer color="var(--white)" />
     </div>
   );
 }
