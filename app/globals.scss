@@ -10,9 +10,26 @@
 }
 
 @font-face {
+  font-family: "Bankside";
+  src: url(/fonts/BanksideSansEx_Trial_Rg.woff2) format("woff2"),
+       url(/fonts/BanksideSansEx_Trial_Rg.woff) format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+@font-face {
   font-family: "Bankside SemiEx";
   src: url(/fonts/BanksideSansSemiEx_Trial_Rg.woff2) format("woff2"),
        url(/fonts/BanksideSansSemiEx_Trial_Rg.woff) format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Bankside SemiCd";
+  src: url(/fonts/BanksideSansSemiCd_Trial_Rg.woff2) format("woff2"),
+       url(/fonts/BanksideSansSemiCd_Trial_Rg.woff) format("woff");
   font-style: normal;
   font-weight: 400;
 }
@@ -34,6 +51,8 @@
   --red: #a41720;
   --fontPrimary: "Bankside", sans-serif;
   --fontSecondary: "Medium", sans-serif;
+  --accentFont: "Bankside SemiEx", sans-serif;
+  --bodyFont: "Bankside SemiCd", sans-serif;
 }
 
 body {

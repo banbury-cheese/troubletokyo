@@ -1,0 +1,255 @@
+.productPage {
+  min-height: 100vh;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: var(--red);
+  height: 20vh;
+  //   position: sticky;
+  //   top: 0;
+  //   z-index: 100;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12vh;
+  //   max-width: 1800px;
+}
+
+.backButton {
+  cursor: pointer;
+  position: absolute;
+  top: 3vh;
+  right: 4vh;
+
+  svg {
+    width: 4vh;
+    height: 4vh;
+    color: white;
+  }
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  height: 9vh;
+  width: fit-content;
+
+  a {
+    svg {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  margin-right: 2rem;
+}
+
+.menuItem {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.main {
+  flex: 1;
+  padding: 7rem 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.productContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  //   gap: 4rem;
+  align-items: start;
+}
+
+.productImageSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  //   padding: 2rem;
+  border-radius: 8px;
+}
+
+.productImage {
+  width: 60vh;
+  height: auto;
+  margin-top: -18vh;
+  object-fit: contain;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.productTitle {
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0;
+  color: var(--red);
+  font-family: var(--fontPrimary);
+  text-transform: uppercase;
+}
+
+.productPrice {
+  font-size: 1.4rem;
+  color: var(--red);
+  margin: 0;
+  font-weight: 600;
+  font-family: var(--accentFont);
+}
+
+.productDescription {
+  color: var(--black);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-family: var(--bodyFont);
+
+  p {
+    margin: 0 0 1rem 0;
+  }
+}
+
+.sizeSelection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sizeButtons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sizeButton {
+  background-color: var(--red);
+  border: 4px solid var(--darkRed);
+  color: white;
+  margin-left: -4px;
+  width: 4vw;
+  height: 4vw;
+  font-size: 0.9vw;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+
+  &:active,
+  &.selected {
+    background-color: var(--white);
+    color: var(--red);
+  }
+}
+
+.sizeChart {
+  color: var(--red);
+  text-decoration: underline;
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--darkRed);
+  }
+}
+
+.addToCartButton {
+  background-color: var(--red);
+  font-family: var(--fontPrimary);
+  font-weight: 600;
+  color: white;
+  border: none;
+  width: fit-content;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+
+  &:active,
+  &.selected {
+    background-color: var(--black);
+    color: var(--white);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .productContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .productTitle {
+    font-size: 2rem;
+  }
+
+  .main {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sizeButtons {
+    justify-content: center;
+  }
+
+  .addToCartButton {
+    width: 100%;
+  }
+
+  .productTitle {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .productPrice {
+    text-align: center;
+  }
+}
