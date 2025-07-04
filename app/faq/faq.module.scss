@@ -1,0 +1,134 @@
+.faqPage {
+  min-height: 100vh;
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding: 80px 40px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--fontSecondary);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 8vh;
+  letter-spacing: 1px;
+  color: var(--black);
+}
+
+.faqSections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section {
+  //   border-bottom: 2px solid var(--black);
+}
+
+.sectionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.sectionTitle {
+  font-family: var(--fontSecondary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--black);
+  text-align: left;
+}
+
+.toggleIcon {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--black);
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.sectionContent {
+//   overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.faqItem {
+  display: flex;
+  flex-direction: column;
+  //   border-top: 1px solid #e0e0e0;
+  padding: 12px 0;
+  width: 80%;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.itemToggleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+//   margin-right: 8px;
+  width: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+
+  svg {
+    width: 100%;
+    height: fit-content;
+  }
+}
+
+
+.questionText {
+  font-family: var(--fontPrimary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+//   letter-spacing: 0.5px;
+  line-height: 1.4;
+  flex: 1;
+  text-align: left;
+}
+
+.answer {
+//   overflow: hidden;
+  margin-top: 15px;
+  gap: 24px;
+  padding-left: 3rem;
+  display: flex;
+
+  p {
+    font-family: var(--bodyFont);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--black);
+    margin: 0;
+    opacity: 0.8;
+  }
+}
