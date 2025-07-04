@@ -156,7 +156,8 @@
   .itemVariant {
     font-size: 0.875rem;
     font-family: var(--fontAccent);
-    color: var(--neutral-500, #6b7280);
+    color: var(--charoal);
+    opacity: 0.5;
 
     .dark & {
       color: var(--neutral-400, #9ca3af);
@@ -214,7 +215,7 @@
 .cartSummary {
   padding: 1rem 0;
   font-size: 0.875rem;
-  color: var(--neutral-500, #6b7280);
+  // color: var(--neutral-500, #6b7280);
 
   .dark & {
     color: var(--neutral-400, #9ca3af);
@@ -230,12 +231,13 @@
   padding-bottom: 0.25rem;
   padding-top: 0.25rem;
 
-  .dark & {
-    border-bottom-color: var(--neutral-700, #374151);
-  }
-
   &:first-child {
     padding-top: 0;
+  }
+
+  &_itemTitle {
+    color: var(--charoal);
+    opacity: 0.5;
   }
 
   .summaryPrice {
@@ -290,12 +292,12 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: #fff;
-//   opacity: 0.9;
+  //   opacity: 0.9;
   transition: all 0.2s;
 
   &:hover {
     background: #a41720;
-}
+  }
 
   &:disabled {
     opacity: 0.5;
