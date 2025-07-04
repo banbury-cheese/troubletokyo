@@ -197,7 +197,7 @@ export default function CartModal() {
                   </ul>
                   <div className={styles.cartSummary}>
                     <div className={styles.summaryRow}>
-                      <p>Taxes</p>
+                      <p className={styles.summaryRow_itemTitle}>Taxes</p>
                       <Price
                         className={styles.summaryPrice}
                         amount={cart.cost.totalTaxAmount.amount}
@@ -205,13 +205,13 @@ export default function CartModal() {
                       />
                     </div>
                     <div className={styles.summaryRow}>
-                      <p>Shipping</p>
+                      <p className={styles.summaryRow_itemTitle}>Shipping</p>
                       <p className={styles.summaryPrice}>
                         Calculated at checkout
                       </p>
                     </div>
                     <div className={styles.summaryRow}>
-                      <p>Total</p>
+                      <p className={styles.summaryRow_itemTitle}>Total</p>
                       <Price
                         className={styles.summaryPrice}
                         amount={cart.cost.totalAmount.amount}

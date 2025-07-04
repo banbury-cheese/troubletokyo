@@ -1,0 +1,224 @@
+.aboutPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  color: white;
+}
+
+.mainContent {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.backgroundImageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  // Space for your background image
+  // You can add: background-image: url('/path/to/your/image.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.contentOverlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 40vh; // Account for header height
+}
+
+.mainContentArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 120px 40px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logoContainer {
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+.troubleLogo {
+  width: 40vw;
+  height: auto;
+
+  svg {
+    width: 100%;
+    height: fit-content;
+    // max-width: 400px;
+  }
+}
+
+.textContent {
+  text-align: center;
+  max-width: 800px;
+}
+
+.mainDescription {
+  font-family: var(--bodyFont);
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  color: var(--white);
+}
+
+.slogan {
+  font-family: var(--fontSecondary);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 40px 0;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.additionalContent {
+  margin: 40px 0;
+
+  .description {
+    font-family: var(--bodyFont);
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 40px;
+    color: var(--white);
+  }
+
+  .italicText {
+    font-family: var(--bodyFont);
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 40px;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  margin-bottom: 20vh;
+}
+
+.faqSection {
+  margin-top: 60px;
+  text-align: center;
+
+  .faqPrompt {
+    font-family: var(--fontSecondary);
+    font-size: 0.8rem;
+    line-height: 1.25;
+        font-weight: 400;
+    // letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    color: #ffffff;
+  }
+
+  .faqLink {
+    color: #ffffff;
+    text-decoration: underline;
+    font-family: var(--fontSecondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--brightRed);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .mainContentArea {
+    padding: 40px 80px;
+  }
+
+  .troubleLogo {
+    width: 320px;
+  }
+
+  .slogan {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentOverlay {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .sidebarNav {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    .navItem {
+      writing-mode: horizontal-tb;
+      text-orientation: mixed;
+    }
+  }
+
+  .mainContentArea {
+    padding: 40px 20px;
+  }
+
+  .troubleLogo {
+    width: 280px;
+  }
+
+  .slogan {
+    font-size: 18px;
+    letter-spacing: 0.15em;
+  }
+
+  .mainDescription,
+  .description {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .italicText {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .troubleLogo {
+    width: 240px;
+  }
+
+  .slogan {
+    font-size: 16px;
+  }
+
+  .mainDescription,
+  .description,
+  .italicText {
+    font-size: 13px;
+  }
+}
