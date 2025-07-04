@@ -1,0 +1,53 @@
+.menu {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__backButton {
+    cursor: pointer;
+    margin-bottom: 1.2rem;
+    width: 60px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      color: white;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__option {
+    text-align: left;
+    font-family: Medium;
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #cccccc;
+    }
+
+    &_selected {
+      color: rgba(255, 255, 255, 0.5);
+      color: color(display-p3 1 1 1 / 0.5);
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.5);
+        color: color(display-p3 1 1 1 / 0.5);
+      }
+    }
+  }
+}
