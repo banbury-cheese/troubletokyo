@@ -1,0 +1,49 @@
+.openCartButton {
+  position: absolute;
+  z-index: 20;
+  top: 25px;
+  right: 2rem;
+}
+
+.openCartContainer {
+  position: relative;
+  display: flex;
+  width: 4vh;
+  height: 3vh;
+  align-items: center;
+  justify-content: center;
+  //   border-radius: 0.375rem;
+  border: 1px solid var(--neutral-200, #e5e7eb);
+  color: #000;
+  //   background: #fff;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: var(--darkRed);
+  }
+}
+
+.openCartIcon {
+  height: 1.8rem; // 20px
+  transition: all 0.2s;
+  transform: translate(0%, -5%);
+}
+
+.openCartQuantity {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(55%, -55%);
+  height: 1rem;
+  width: 1rem;
+  //   border-radius: 0.25rem;
+  background: var(--white);
+  color: var(--darkRed);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin-bottom: -2px;
+  }
+}

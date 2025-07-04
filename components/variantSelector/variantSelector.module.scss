@@ -1,0 +1,52 @@
+.sizeSelection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sizeButtons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sizeButton {
+  background-color: var(--red);
+  border: 4px solid var(--darkRed);
+  color: white;
+  margin-left: -4px;
+  width: 4vw;
+  height: 4vw;
+  font-size: 0.9vw;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+
+  &:active,
+  &.selected {
+    background-color: var(--darkRed);
+  }
+
+  &.disabled {
+    border: 4px solid var(--darkRed);
+    color: var(--darkRed);
+    // opacity: 0.5;
+    cursor: not-allowed;
+    text-decoration: line-through;
+
+    &:hover {
+      background-color: var(--black);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 480px) {
+  .sizeButtons {
+    justify-content: center;
+  }
+}

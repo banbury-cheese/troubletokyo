@@ -5,68 +5,6 @@
   flex-direction: column;
 }
 
-.header {
-  background-color: var(--red);
-  height: 20vh;
-  //   position: sticky;
-  //   top: 0;
-  //   z-index: 100;
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 12vh;
-  //   max-width: 1800px;
-}
-
-.backButton {
-  cursor: pointer;
-  position: absolute;
-  top: 3vh;
-  right: 4vh;
-
-  svg {
-    width: 4vh;
-    height: 4vh;
-    color: white;
-  }
-}
-
-.logo {
-  flex: 1;
-  display: flex;
-  height: 9vh;
-  width: fit-content;
-
-  a {
-    svg {
-      height: 100%;
-      width: auto;
-    }
-  }
-}
-
-.menu {
-  display: flex;
-  gap: 2rem;
-  margin-right: 2rem;
-}
-
-.menuItem {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.7;
-  }
-}
-
 .main {
   flex: 1;
   padding: 7rem 2rem;
@@ -192,7 +130,7 @@
   width: fit-content;
   padding: 1rem 2rem;
   font-size: 1rem;
-  cursor: pointer;
+  // cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
   margin-top: 1rem;

@@ -1,27 +1,30 @@
-'use client';
+"use client";
 
-import { PlusIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
+import { PlusIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import { addItem } from "@/components/cart/actions";
 import { useProduct } from "@/components/product/product-context";
 import { Product, ProductVariant } from "@/lib/shopify/types";
-import { useActionState } from 'react';
-import { useCart } from './cart-context';
+import { useActionState } from "react";
+import { useCart } from "./cart-context";
+import styles from "@/app/apparel/[handle]/apparel.module.scss";
+import { toast, Toaster } from "sonner";
 
 function SubmitButton({
   availableForSale,
-  selectedVariantId
+  selectedVariantId,
 }: {
   availableForSale: boolean;
   selectedVariantId: string | undefined;
 }) {
-  const buttonClasses =
-    'relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white';
-  const disabledClasses = 'cursor-not-allowed opacity-60 hover:opacity-60';
+  const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
     return (
-      <button disabled className={clsx(buttonClasses, disabledClasses)}>
+      <button
+        disabled
+        className={clsx(styles.addToCartButton, disabledClasses)}
+      >
         Out Of Stock
       </button>
     );
@@ -30,13 +33,11 @@ function SubmitButton({
   if (!selectedVariantId) {
     return (
       <button
-        aria-label="Please select an option"
+        aria-label="Please select an variant"
         disabled
-        className={clsx(buttonClasses, disabledClasses)}
+        title={"Please select a variant"}
+        className={clsx(styles.addToCartButton, disabledClasses)}
       >
-        <div className="absolute left-0 ml-4">
-          <PlusIcon className="h-5" />
-        </div>
         Add To Cart
       </button>
     );
@@ -45,13 +46,9 @@ function SubmitButton({
   return (
     <button
       aria-label="Add to cart"
-      className={clsx(buttonClasses, {
-        'hover:opacity-90': true
-      })}
+      className={clsx(styles.addToCartButton)}
+      type="submit"
     >
-      <div className="absolute left-0 ml-4">
-        <PlusIcon className="h-5" />
-      </div>
       Add To Cart
     </button>
   );
@@ -82,6 +79,7 @@ export function AddToCart({ product }: { product: Product }) {
         addItemAction();
       }}
     >
+      <Toaster />
       <SubmitButton
         availableForSale={availableForSale}
         selectedVariantId={selectedVariantId}

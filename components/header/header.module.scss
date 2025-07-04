@@ -1,0 +1,61 @@
+.header {
+  background-color: var(--red);
+  height: 20vh;
+  //   position: sticky;
+  //   top: 0;
+  //   z-index: 100;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12vh;
+  //   max-width: 1800px;
+}
+
+.backButton {
+  cursor: pointer;
+  position: absolute;
+  top: 2rem;
+  right: 6rem;
+
+  svg {
+    width: fit-content;
+    height: 3vh;
+    // color: white;
+  }
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  height: 9vh;
+  width: fit-content;
+
+  a {
+    svg {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  margin-right: 2rem;
+}
+
+.menuItem {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

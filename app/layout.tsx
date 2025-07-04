@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-
+import { CartProvider } from "@/components/cart/cart-context";
+import { getCart } from "@/lib/shopify";
+import { Toaster } from "sonner";
+import CartModal from "@/components/cart/modal/modal";
 
 export const metadata: Metadata = {
   title: "Trouble Tokyo",
@@ -12,12 +15,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Don't await the fetch, pass the Promise to the context provider
+  const cart = getCart();
+
   return (
     <html lang="en">
-      <body
-        className={``}
-      >
-        {children}
+      <body className={``}>
+        <CartProvider cartPromise={cart}>
+          {children}
+          <Toaster />
+          <CartModal />
+        </CartProvider>
       </body>
     </html>
   );
