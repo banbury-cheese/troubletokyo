@@ -46,10 +46,21 @@
   z-index: 1;
 }
 
-.heroContent {
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
   z-index: 2;
+  pointer-events: none;
+}
+
+.heroContent {
+  z-index: 3;
   display: flex;
-  width: 70%;
+  width: 50%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -63,7 +74,27 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  // cursor: pointer;
+  transition: transform 0.3s ease;
+
+  svg {
+    width: 100%;
+    height: auto;
+    // max-width: 600px;
+  }
 }
+
+// // Global styles for logo animation
+// :global {
+//   .logo-outline {
+//     stroke-linecap: round;
+//     stroke-linejoin: round;
+//   }
+
+//   .logo-text {
+//     transform-origin: center;
+//   }
+// }
 
 .tagline {
   position: relative;
@@ -92,6 +123,8 @@
   justify-content: center;
   text-decoration: none;
   transition: transform 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .sectionContent {
@@ -105,12 +138,18 @@
 }
 
 .sectionTitle {
-  font-family: var(--fontPrimary);
+  font-family: var(--fontSecondary);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
-  margin: 0;
   letter-spacing: 0.05em;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  cursor: pointer;
   // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -189,5 +228,41 @@
 
   &:hover {
     color: var(--red);
+  }
+}
+
+// Global h-effect animation styles
+:global(.h-effect) {
+  position: relative;
+  overflow: hidden;
+  height: 1.2em;
+  line-height: 1.2;
+
+  .h-item {
+    display: block;
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    font-family: inherit;
+
+    &:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      :global(.char) {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  :global(.char) {
+    display: inline-block;
+    transform-origin: center bottom;
   }
 }
