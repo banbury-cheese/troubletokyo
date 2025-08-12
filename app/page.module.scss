@@ -64,6 +64,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @include media("<tablet") {
+    width: 90%;
+  }
 }
 
 .logo {
@@ -125,6 +129,10 @@
   transition: transform 0.3s ease;
   overflow: hidden;
   cursor: pointer;
+
+  @include media("<tablet") {
+    height: 25vh;
+  }
 }
 
 .sectionContent {
@@ -135,6 +143,10 @@
   width: 100%;
   display: flex;
   align-items: center;
+
+  @include media("<tablet") {
+    padding: 0.5rem;
+  }
 }
 
 .sectionTitle {
@@ -151,6 +163,10 @@
   transition: all 0.3s ease;
   cursor: pointer;
   // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+  @include media("<tablet") {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+  }
 }
 
 // Alternate alignment for sections
@@ -173,61 +189,6 @@
   }
   &:active {
     opacity: 0.5;
-  }
-}
-
-.footer {
-  background: var(--black);
-  // padding: 2rem 1rem;
-  margin-top: auto;
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  align-items: end;
-  overflow: hidden;
-}
-
-.footerContent {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.footerLeft {
-  flex: 1;
-  margin-left: 2rem;
-  margin-bottom: -5px;
-  display: flex;
-  align-items: center;
-
-  svg {
-    width: 70%;
-    height: auto;
-  }
-}
-
-.footerRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
-  margin-right: 2rem;
-}
-
-.footerLink {
-  font-family: var(--fontSecondary);
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  transition: color 0.1s ease;
-  text-align: right;
-
-  &:hover {
-    color: var(--red);
   }
 }
 
@@ -255,7 +216,7 @@
       width: 100%;
 
       :global(.char) {
-        opacity: 0;
+        // opacity: 0;
         transform: translateY(100%);
       }
     }

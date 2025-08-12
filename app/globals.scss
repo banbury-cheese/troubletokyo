@@ -1,10 +1,12 @@
 @import "tailwindcss";
+// @import "../styles/breakpoints.scss";
+
 
 // Import custom fonts
 @font-face {
   font-family: "Bankside";
   src: url(/fonts/BanksideSansEx_Trial_SBd.woff2) format("woff2"),
-       url(/fonts/BanksideSansEx_Trial_SBd.woff) format("woff");
+    url(/fonts/BanksideSansEx_Trial_SBd.woff) format("woff");
   font-style: normal;
   font-weight: 600;
 }
@@ -12,16 +14,15 @@
 @font-face {
   font-family: "Bankside";
   src: url(/fonts/BanksideSansEx_Trial_Rg.woff2) format("woff2"),
-       url(/fonts/BanksideSansEx_Trial_Rg.woff) format("woff");
+    url(/fonts/BanksideSansEx_Trial_Rg.woff) format("woff");
   font-style: normal;
   font-weight: 400;
 }
 
-
 @font-face {
   font-family: "Bankside SemiEx";
   src: url(/fonts/BanksideSansSemiEx_Trial_Rg.woff2) format("woff2"),
-       url(/fonts/BanksideSansSemiEx_Trial_Rg.woff) format("woff");
+    url(/fonts/BanksideSansSemiEx_Trial_Rg.woff) format("woff");
   font-style: normal;
   font-weight: 400;
 }
@@ -29,16 +30,15 @@
 @font-face {
   font-family: "Bankside SemiCd";
   src: url(/fonts/BanksideSansSemiCd_Trial_Rg.woff2) format("woff2"),
-       url(/fonts/BanksideSansSemiCd_Trial_Rg.woff) format("woff");
+    url(/fonts/BanksideSansSemiCd_Trial_Rg.woff) format("woff");
   font-style: normal;
   font-weight: 400;
 }
 
-
 @font-face {
   font-family: "Bankside SemiCd";
   src: url(/fonts/BanksideSansSemiCd_Trial_Lt.woff2) format("woff2"),
-       url(/fonts/BanksideSansSemiCd_Trial_Lt.woff) format("woff");
+    url(/fonts/BanksideSansSemiCd_Trial_Lt.woff) format("woff");
   font-style: normal;
   font-weight: 300;
 }
@@ -46,7 +46,7 @@
 @font-face {
   font-family: "Bankside SemiCd";
   src: url(/fonts/BanksideSansSemiCd_Trial_LtIt.woff2) format("woff2"),
-       url(/fonts/BanksideSansSemiCd_Trial_LtIt.woff) format("woff");
+    url(/fonts/BanksideSansSemiCd_Trial_LtIt.woff) format("woff");
   font-style: italic;
   font-weight: 300;
 }
@@ -54,7 +54,7 @@
 @font-face {
   font-family: Medium;
   src: url(/fonts/Medium.woff2) format("woff2"),
-       url(/fonts/Medium.woff) format("woff");
+    url(/fonts/Medium.woff) format("woff");
   font-style: normal;
   font-weight: 400;
 }
@@ -81,4 +81,33 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
+
+}
+
+.h-item {
+  display: block;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  font-family: inherit;
+
+  &:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .char {
+      // opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+}
+
+.char {
+  display: inline-block;
+  transform-origin: center bottom;
 }

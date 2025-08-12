@@ -5,6 +5,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .backgroundOverlay {
@@ -22,8 +24,13 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  //   max-width: 1200px;
-  //   margin: 40px 0;
+
+  @include media("<tablet") {
+    margin-top: 40vh;
+    margin-bottom: 10vh;
+    // rotate: 90deg;
+    display: block;
+  }
 }
 
 .camera {
@@ -31,6 +38,10 @@
   width: 100%;
   max-width: 800px;
   aspect-ratio: 4/3;
+
+  @include media("<tablet") {
+    width: 100vw;
+  }
 }
 
 .cameraImage {
@@ -52,17 +63,20 @@
   overflow: hidden;
 
   // Hide controls by default
-  .carouselControls,
-  .viewerHeader {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
 
-  &:hover .carouselControls,
-  &:hover .viewerHeader {
-    opacity: 1;
-    pointer-events: auto;
+  @include media(">tablet") {
+    .carouselControls,
+    .viewerHeader {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    &:hover .carouselControls,
+    &:hover .viewerHeader {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 }
 
@@ -77,6 +91,10 @@
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #444 #222;
+
+  @include media("<tablet") {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .mediaGrid::-webkit-scrollbar {
@@ -96,6 +114,10 @@
   border-radius: 2px;
   overflow: hidden;
   height: 100px;
+
+  @include media("<tablet") {
+    height: 80px;
+  }
 
   &:hover {
     // transform: scale(1.05);
@@ -195,7 +217,7 @@
 }
 
 .viewerHeader {
-  background-color: #1a1a1a7d;
+  background-color: #1a1a1a71;
   position: absolute;
   z-index: 11;
   width: 85%;
@@ -204,17 +226,27 @@
   align-items: center;
   padding: 8px;
   display: flex;
+
+  @include media("<tablet") {
+    padding: 1px;
+  }
 }
 
 .backButton {
   background: none;
   border: none;
   color: white;
-  font-size: 12px;
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
+  font-size: 10px;
+
   transition: background-color 0.2s;
+
+  @include media("<tablet") {
+    font-size: 5px;
+    padding: 0px 4px;
+  }
 
   &:hover {
     background-color: #333;
@@ -226,6 +258,10 @@
   font-size: 10px;
   color: white;
   font-weight: 500;
+
+  @include media("<tablet") {
+    font-size: 5px;
+  }
 }
 
 .viewerContent {
@@ -260,6 +296,9 @@
 
 .carouselImage {
   object-fit: contain;
+  @include media("<tablet") {
+    object-fit: cover;
+  }
 }
 
 .carouselControls {
@@ -273,6 +312,11 @@
   width: 100%;
   bottom: 0;
   display: flex;
+
+  @include media("<tablet") {
+    padding: 0px;
+    background-color: #1a1a1a71;
+  }
 }
 
 .carouselButton {
@@ -287,6 +331,15 @@
 
   &:hover {
     background-color: #333;
+
+    @include media("<tablet") {
+      background-color: #3333332f;
+    }
+  }
+
+  @include media("<tablet") {
+    font-size: 12px;
+    padding: 2px 9px;
   }
 }
 
@@ -294,6 +347,10 @@
   font-family: var(--fontSecondary);
   font-size: 10px;
   color: white;
+
+  @include media("<tablet") {
+    font-size: 5px;
+  }
 }
 
 // Modal Styles
@@ -309,6 +366,10 @@
   align-items: center;
   z-index: 1000;
   backdrop-filter: blur(5px);
+
+  @include media("<tablet") {
+    top: 2vh;
+  }
 }
 
 .modalContent {
@@ -386,81 +447,81 @@
   }
 }
 
-// Responsive Design
-@media (max-width: 768px) {
-  .cameraContainer {
-    margin: 20px 0;
-  }
+// // Responsive Design
+// @media (max-width: 768px) {
+//   .cameraContainer {
+//     margin: 20px 0;
+//   }
 
-  .camera {
-    max-width: 600px;
-  }
+//   .camera {
+//     max-width: 600px;
+//   }
 
-  .cameraScreen {
-    top: 18%;
-    left: 11%;
-    width: 42%;
-    height: 60%;
-    padding: 6px;
-  }
+//   .cameraScreen {
+//     top: 18%;
+//     left: 11%;
+//     width: 42%;
+//     height: 60%;
+//     padding: 6px;
+//   }
 
-  .mediaGrid {
-    gap: 2px;
-  }
+//   .mediaGrid {
+//     gap: 2px;
+//   }
 
-  .mediaDate {
-    font-size: 5px;
-  }
+//   .mediaDate {
+//     font-size: 5px;
+//   }
 
-  .mediaTitle {
-    font-size: 4px;
-  }
+//   .mediaTitle {
+//     font-size: 4px;
+//   }
 
-  .modalMediaContainer {
-    width: 95vw;
-    height: 50vh;
-  }
-}
+//   .modalMediaContainer {
+//     width: 95vw;
+//     height: 50vh;
+//   }
+// }
 
-@media (max-width: 480px) {
-  .backgroundOverlay {
-    padding: 10px;
-  }
+// @media (max-width: 480px) {
+//   .backgroundOverlay {
+//     padding: 10px;
+//   }
 
-  .camera {
-    max-width: 400px;
-  }
+//   .camera {
+//     max-width: 400px;
+//   }
 
-  .cameraScreen {
-    padding: 4px;
-  }
+//   .cameraScreen {
+//     padding: 4px;
+//   }
 
-  .mediaGrid {
-    gap: 1px;
-  }
+//   .mediaGrid {
+//     gap: 1px;
+//   }
 
-  .mediaDate {
-    font-size: 4px;
-  }
+//   .mediaDate {
+//     font-size: 4px;
+//   }
 
-  .mediaTitle {
-    font-size: 3px;
-  }
+//   .mediaTitle {
+//     font-size: 3px;
+//   }
 
-  .modalMediaContainer {
-    width: 98vw;
-    height: 40vh;
-  }
+//   .modalMediaContainer {
+//     width: 98vw;
+//     height: 40vh;
+//   }
 
-  .modalInfo {
-    padding: 15px;
+//   .modalInfo {
+//     padding: 15px;
 
-    h3 {
-      font-size: 20px;
-    }
+//     h3 {
+//       font-size: 20px;
+//     }
 
-    p {
-      font-size: 14px;
-    }
-  }
-}
+//     p {
+//       font-size: 14px;
+//     }
+//   }
+// }

@@ -2,6 +2,12 @@
   position: absolute;
   top: 2rem;
   left: 2rem;
+
+  @include media("<tablet") {
+    top: 1rem;
+    left: 1rem;
+  }
+
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -34,10 +40,11 @@
     font-weight: 400;
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transform-origin: left center;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: #cccccc;
+      cursor: pointer;
     }
 
     &_selected {

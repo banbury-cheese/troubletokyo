@@ -10,6 +10,14 @@
   padding: 80px 40px 120px;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include media("<tablet") {
+    padding: 60px 24px 80px;
+  }
+
+  @include media("<phone") {
+    padding: 40px 16px 60px;
+  }
 }
 
 .title {
@@ -20,16 +28,30 @@
   margin-bottom: 8vh;
   letter-spacing: 1px;
   color: var(--black);
+
+  @include media("<tablet") {
+    font-size: 1.2rem;
+    margin-bottom: 6vh;
+  }
+
+  @include media("<phone") {
+    font-size: 1.1rem;
+    margin-bottom: 4vh;
+  }
 }
 
 .faqSections {
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
 
-.section {
-  //   border-bottom: 2px solid var(--black);
+  @include media("<tablet") {
+    gap: 32px;
+  }
+
+  @include media("<phone") {
+    gap: 24px;
+  }
 }
 
 .sectionHeader {
@@ -38,6 +60,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+
+  @include media("<tablet") {
+    padding: 16px 0;
+  }
+
+  @include media("<phone") {
+    padding: 12px 0;
+  }
 }
 
 .sectionTitle {
@@ -47,6 +77,14 @@
   letter-spacing: 1px;
   color: var(--black);
   text-align: left;
+
+  @include media("<tablet") {
+    font-size: 1.2rem;
+  }
+
+  @include media("<phone") {
+    font-size: 1.1rem;
+  }
 }
 
 .toggleIcon {
@@ -55,11 +93,23 @@
   color: var(--black);
   transition: transform 0.3s ease;
   transform-origin: center;
+
+  @include media("<tablet") {
+    font-size: 36px;
+  }
+
+  @include media("<phone") {
+    font-size: 32px;
+  }
 }
 
 .sectionContent {
 //   overflow: hidden;
   padding-bottom: 10px;
+
+  @include media("<phone") {
+    padding-bottom: 8px;
+  }
 }
 
 .faqItem {
@@ -68,6 +118,16 @@
   //   border-top: 1px solid #e0e0e0;
   padding: 12px 0;
   width: 80%;
+
+  @include media("<tablet") {
+    width: 90%;
+    padding: 10px 0;
+  }
+
+  @include media("<phone") {
+    width: 100%;
+    padding: 8px 0;
+  }
 }
 
 .question {
@@ -81,6 +141,14 @@
   cursor: pointer;
   text-align: left;
   transition: opacity 0.3s ease;
+
+  @include media("<tablet") {
+    gap: 1.5rem;
+  }
+
+  @include media("<phone") {
+    gap: 1rem;
+  }
 
   &:hover {
     opacity: 0.7;
@@ -97,12 +165,15 @@
   transition: transform 0.3s ease;
   transform-origin: center;
 
+  @include media("<phone") {
+    width: 0.8rem;
+  }
+
   svg {
     width: 100%;
     height: fit-content;
   }
 }
-
 
 .questionText {
   font-family: var(--fontPrimary);
@@ -113,6 +184,15 @@
   line-height: 1.4;
   flex: 1;
   text-align: left;
+
+  @include media("<tablet") {
+    font-size: 0.95rem;
+  }
+
+  @include media("<phone") {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
 }
 
 .answer {
@@ -122,6 +202,18 @@
   padding-left: 3rem;
   display: flex;
 
+  @include media("<tablet") {
+    margin-top: 12px;
+    gap: 20px;
+    padding-left: 2.5rem;
+  }
+
+  @include media("<phone") {
+    margin-top: 10px;
+    gap: 16px;
+    padding-left: 1.8rem;
+  }
+
   p {
     font-family: var(--bodyFont);
     font-size: 1rem;
@@ -130,5 +222,14 @@
     color: var(--black);
     margin: 0;
     opacity: 0.8;
+
+    @include media("<tablet") {
+      font-size: 0.95rem;
+    }
+
+    @include media("<phone") {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
   }
 }

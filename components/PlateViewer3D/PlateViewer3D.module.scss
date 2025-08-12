@@ -1,0 +1,192 @@
+.viewer3DContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  @include media("<tablet") {
+    // margin: 0;
+    // padding: 0;
+  }
+}
+
+.colorSelector {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.colorLabel {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black, #1a1a1a);
+  margin-bottom: 15px;
+}
+
+.colorOptions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.colorButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  border: 3px solid transparent;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &.active {
+    border-color: var(--primary-color, #007bff);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3);
+  }
+}
+
+.colorPreview {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.viewerTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--black, #1a1a1a);
+  margin-bottom: 25px;
+  font-family: var(--font-primary, Arial, sans-serif);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @include media("<tablet") {
+    font-size: 1.8rem;
+  }
+
+  @include media("<phone") {
+    font-size: 1.5rem;
+  }
+}
+
+.viewer3D {
+  width: 100%;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: linear-gradient(45deg, #f1f3f4 0%, #ffffff 100%);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+
+  @include media("<tablet") {
+    height: 400px;
+  }
+
+  @include media("<phone") {
+    height: 320px;
+  }
+
+  canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 13px;
+  }
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray, #666);
+  margin: 0;
+}
+
+.controls {
+  margin-top: 20px;
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.controlsText {
+  font-size: 1rem;
+  color: var(--gray, #555);
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  @include media("<tablet") {
+    font-size: 0.9rem;
+  }
+
+  @include media("<phone") {
+    font-size: 0.8rem;
+  }
+}
+
+// Hover effect for the entire container - commented out for now
+// .viewer3DContainer:hover {
+//   transform: translateY(-2px);
+//   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+//   transition: all 0.3s ease;
+// }
+
+// Theme consistency
+.viewer3DContainer {
+  // Match site's color scheme
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6c757d;
+  --border-color: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}

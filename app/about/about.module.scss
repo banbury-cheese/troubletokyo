@@ -31,6 +31,9 @@
   // You can add: background-image: url('/path/to/your/image.jpg');
   background-size: cover;
   background-position: center;
+  img {
+    object-fit: cover;
+  }
 }
 
 .contentOverlay {
@@ -56,6 +59,10 @@
 .logoContainer {
   margin-bottom: 10vh;
   text-align: center;
+
+  @include media("<tablet") {
+    margin-bottom: 4vh;
+  }
 }
 
 .troubleLogo {
@@ -104,6 +111,11 @@
     line-height: 1.25;
     margin-bottom: 40px;
     color: var(--white);
+
+    @include media("<tablet") {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
   }
 
   .italicText {
@@ -114,6 +126,10 @@
     margin-bottom: 40px;
     color: var(--white);
     font-style: italic;
+    @include media("<tablet") {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
   }
 
   margin-bottom: 20vh;
@@ -127,7 +143,7 @@
     font-family: var(--fontSecondary);
     font-size: 0.8rem;
     line-height: 1.25;
-        font-weight: 400;
+    font-weight: 400;
     // letter-spacing: 0.1em;
     margin-bottom: 12px;
     color: #ffffff;
@@ -166,21 +182,7 @@
 @media (max-width: 768px) {
   .contentOverlay {
     flex-direction: column;
-    padding-top: 60px;
-  }
-
-  .sidebarNav {
-    position: static;
-    transform: none;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
-    .navItem {
-      writing-mode: horizontal-tb;
-      text-orientation: mixed;
-    }
+    padding-top: 35vh;
   }
 
   .mainContentArea {
@@ -192,8 +194,7 @@
   }
 
   .slogan {
-    font-size: 18px;
-    letter-spacing: 0.15em;
+    font-size: 15px;
   }
 
   .mainDescription,
@@ -203,7 +204,7 @@
   }
 
   .italicText {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
@@ -213,12 +214,13 @@
   }
 
   .slogan {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .mainDescription,
   .description,
   .italicText {
-    font-size: 13px;
+    font-size: 15px;
+    text-align: center;
   }
 }

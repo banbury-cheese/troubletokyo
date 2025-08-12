@@ -123,6 +123,7 @@ export default function Home() {
     }
   }, []);
 
+
   useEffect(() => {
     // Section hover animations with character roll effect
     const hEffects = document.querySelectorAll(".h-effect");
@@ -148,10 +149,14 @@ export default function Home() {
             paused: true,
             defaults: { duration: 0.5, stagger: 0.025, ease: "power1.out" },
           })
-          .to(text1.chars, {
-            yPercent: -100,
-            opacity: 0,
-          })
+          .fromTo(
+            text1.chars,
+            { opacity: 1 },
+            {
+              yPercent: -100,
+              opacity: 0,
+            }
+          )
           .fromTo(
             text2.chars,
             { opacity: 0 },

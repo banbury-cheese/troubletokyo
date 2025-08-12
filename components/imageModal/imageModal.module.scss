@@ -1,0 +1,240 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
+
+  @include media("<tablet") {
+    top: 2vh;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  pointer-events: all;
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.imageContainer {
+  position: relative;
+  pointer-events: all;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modalImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.navButton {
+  cursor: pointer;
+  z-index: 10;
+  background: #00000090;
+  backdrop-filter: blur(3px);
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  padding-top: 4px;
+  font-weight: bold;
+  transition: all 0.2s;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include media("<tablet") {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: #000000;
+    transform: translateY(-50%) scale(1.02);
+  }
+}
+
+.prevButton {
+  left: 20px;
+
+  @include media("<tablet") {
+    left: 10px;
+  }
+}
+
+.nextButton {
+  right: 20px;
+
+  @include media("<tablet") {
+    right: 10px;
+  }
+}
+
+.infoContainer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 35vw;
+  min-width: 400px;
+  background: #000;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  pointer-events: all;
+  border-left: 1px solid #333;
+
+  @include media("<tablet") {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-width: auto;
+    padding: 20px;
+    border-left: none;
+    border-top: 1px solid #333;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  line-height: 1;
+  transition: color 0.2s ease;
+
+  @include media("<tablet") {
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+.infoContent {
+  padding-top: 60px;
+
+  @include media("<tablet") {
+    padding-top: 50px;
+  }
+}
+
+.infoItem {
+  margin-bottom: 30px;
+
+  @include media("<tablet") {
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  // line-height: 1;
+
+  @include media("<tablet") {
+    font-size: 20px;
+  }
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: #888;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  @include media("<tablet") {
+    font-size: 10px;
+  }
+}
+
+.value {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  @include media("<tablet") {
+    font-size: 14px;
+  }
+}
+
+.description {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+
+  @include media("<tablet") {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+.imageCounter {
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #333;
+
+  @include media("<tablet") {
+    font-size: 12px;
+    padding: 15px 0;
+  }
+}
+
+// Responsive design - Updated to use only tablet breakpoint mixin
+@include media("<tablet") {
+  .modalContent {
+    flex-direction: column;
+  }
+
+  // Let GSAP handle all positioning during animations
+  // CSS positioning removed to prevent conflicts
+}

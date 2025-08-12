@@ -16,6 +16,8 @@ import { ProductProvider } from "@/components/product/product-context";
 import Header from "@/components/header/header";
 import { VariantSelector } from "@/components/variantSelector/variantSelector";
 import { AddToCart } from "@/components/cart/add-to-cart";
+import Price from "@/components/price";
+import SizeChartLink from "@/components/sizeChart/sizeChartLink";
 
 export async function generateMetadata(props: {
   params: Promise<{ handle: string }>;
@@ -109,10 +111,11 @@ export default async function ApparelProductPage(props: {
             <div className={styles.productDetails}>
               <Suspense>
                 <h1 className={styles.productTitle}>{product.title}</h1>
-                <p className={styles.productPrice}>
-                  {product.priceRange.maxVariantPrice.amount}
-                </p>
-
+                <Price
+                  className={styles.productPrice}
+                  amount={product.priceRange.maxVariantPrice.amount}
+                  currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+                />
                 {product.descriptionHtml ? (
                   <Prose
                     className={styles.productDescription}
@@ -127,9 +130,7 @@ export default async function ApparelProductPage(props: {
                   options={product.options}
                   variants={product.variants}
                 />
-                <Link href="#" className={styles.sizeChart}>
-                  Sizing Chart / Reference
-                </Link>
+                <SizeChartLink className={styles.sizeChart} />
               </div>
 
               {/* Add to Cart Button */}

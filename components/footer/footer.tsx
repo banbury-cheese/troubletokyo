@@ -1,11 +1,63 @@
+"use client";
 import Link from "next/link";
+import { useEffect } from "react";
+import { gsap } from "gsap";
 import styles from "./footer.module.scss";
+import { SplitText } from "gsap/SplitText";
 
 interface FooterProps {
   color?: string;
 }
 
 export default function Footer({ color = "var(--white)" }: FooterProps) {
+  useEffect(() => {
+    // Footer link hover animations with scale and opacity effect
+    const footerLinks = document.querySelectorAll(".footer-link");
+
+    footerLinks.forEach((link) => {
+      let linkChars = new SplitText(link, {
+        type: "chars",
+        charsClass: "char-footer",
+      });
+
+      const handleMouseEnter = () => {
+        const footerLinkAni = gsap
+          .fromTo(
+            linkChars.chars,
+            { opacity: 1 },
+            {
+              stagger: 0.05,
+              opacity: 0.5,
+              duration: 0.5,
+              ease: "power4.inOut",
+            }
+          )
+          .timeScale(2);
+      };
+
+      const handleMouseLeave = () => {
+        const footerLinkAni = gsap
+          .to(linkChars.chars, {
+            stagger: 0.05,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power4.inOut",
+          })
+          .timeScale(2);
+      };
+
+      link.addEventListener("mouseenter", handleMouseEnter);
+      link.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    return () => {
+      footerLinks.forEach((link) => {
+        link.removeEventListener("mouseenter", () => {});
+        link.removeEventListener("mouseleave", () => {});
+      });
+    };
+  }, []);
+
   return (
     <footer className={styles.footer} style={{ color: color }}>
       <div className={styles.footerContent}>
@@ -13,17 +65,23 @@ export default function Footer({ color = "var(--white)" }: FooterProps) {
           <FooterLogo color={color} />
         </div>
         <div className={styles.footerRight}>
-          <Link href="/contact" className={styles.footerLink}>
+          <Link
+            href="mailto:tamedtoronto@gmail.com"
+            className={`${styles.footerLink} footer-link`}
+          >
             CONTACT
           </Link>
-          <Link href="/instagram" className={styles.footerLink}>
+          <Link
+            href="https://www.instagram.com/troubletokyo/"
+            className={`${styles.footerLink} footer-link`}
+          >
             INSTAGRAM
           </Link>
-          <Link href="/media" className={styles.footerLink}>
+          <Link href="/media" className={`${styles.footerLink} footer-link`}>
             MEDIA
           </Link>
-          <Link href="/culture" className={styles.footerLink}>
-            CULTURE
+          <Link href="/about" className={`${styles.footerLink} footer-link`}>
+            ABOUT
           </Link>
         </div>
       </div>

@@ -1,0 +1,141 @@
+.folderGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20vh 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 10vh;
+
+  @include media("<tablet") {
+    grid-template-columns: 1fr;
+    gap: 0vh 0px;
+    padding: 10px 10px;
+    margin-top: 5vh;
+  }
+}
+
+.folderCard {
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+
+  @include media("<tablet") {
+    padding: 30px 15px;
+  }
+
+  &:hover {
+    // transform: translateY(-5px);
+
+    .folderOverlay {
+      opacity: 0.8;
+    }
+
+    .folderIcon {
+      transform: scale(1.1);
+    }
+  }
+
+  @include media(">tablet") {
+    &:nth-child(2n + 1)::after {
+      content: "";
+      position: absolute;
+      bottom: -9vh;
+      left: -50vw;
+      width: 200vw;
+      height: 2px;
+      background: var(--darkRed);
+    }
+
+    &:nth-last-child(-n + 2)::after {
+      display: none;
+    }
+  }
+
+  @include media("<tablet") {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1vh;
+      left: -50vw;
+      width: 200vw;
+      height: 2px;
+      background: var(--darkRed);
+    }
+
+    &:nth-last-child(-n + 1)::after {
+      display: none;
+    }
+  }
+
+  .folderImageContainer {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+
+    @include media("<tablet") {
+      margin-bottom: 10px;
+    }
+  }
+
+  .folderImage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .folderOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  .folderIcon {
+    color: white;
+    transition: transform 0.3s ease;
+  }
+
+  .folderName {
+    font-family: "Bankside";
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .folderDescription {
+    font-size: 0.9rem;
+    color: #cccccc;
+    text-align: center;
+    font-family: "Bankside SemiEx";
+    font-style: normal;
+    font-weight: 400;
+    margin: 0.5rem 0 0 0;
+  }
+}

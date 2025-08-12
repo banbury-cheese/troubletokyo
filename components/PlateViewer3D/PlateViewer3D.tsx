@@ -1,0 +1,520 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import styles from "./PlateViewer3D.module.scss";
+
+interface PlateViewer3DProps {
+  modelSrc?: string; // Optional since we'll use the FBX model
+  title?: string;
+  colorOption?: number; // 1-5 for different color options
+  onColorChange?: (colorOption: number) => void; // Callback for color changes
+}
+
+export default function PlateViewer3D({
+  modelSrc,
+  title,
+  colorOption = 1,
+  onColorChange,
+}: PlateViewer3DProps) {
+  const mountRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const animationIdRef = useRef<number | null>(null);
+  const meshRef = useRef<THREE.Object3D | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentColorOption, setCurrentColorOption] = useState(colorOption);
+
+  // Helper: prepare textures so the atlas doesn't tile or flip unexpectedly
+  const prepareColorTexture = (tex: THREE.Texture) => {
+    // Color textures should be in sRGB and not repeat
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.wrapS = THREE.ClampToEdgeWrapping;
+    tex.wrapT = THREE.ClampToEdgeWrapping;
+    tex.flipY = true; // FBX UVs generally expect default flipY=true for images
+    tex.center.set(0.5, 0.5);
+    tex.rotation = 0;
+    tex.generateMipmaps = true;
+    tex.minFilter = THREE.LinearMipmapLinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    tex.anisotropy = rendererRef.current
+      ? rendererRef.current.capabilities.getMaxAnisotropy()
+      : 8;
+    tex.needsUpdate = true;
+    return tex;
+  };
+  const prepareDataTexture = (tex: THREE.Texture) => {
+    // Non-color data should not repeat either to avoid seams
+    tex.wrapS = THREE.ClampToEdgeWrapping;
+    tex.wrapT = THREE.ClampToEdgeWrapping;
+    tex.flipY = true;
+    tex.minFilter = THREE.LinearMipmapLinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    tex.needsUpdate = true;
+    return tex;
+  };
+
+  // Handle color change
+  const handleColorChange = (newColorOption: number) => {
+    setCurrentColorOption(newColorOption);
+    if (onColorChange) {
+      onColorChange(newColorOption);
+    }
+
+    // Update material if mesh is loaded
+    if (meshRef.current) {
+      updateMeshColor(newColorOption);
+    }
+  };
+
+  // Function to update mesh color
+  const updateMeshColor = (colorNum: number) => {
+    if (!meshRef.current) return;
+
+    const textureLoader = new THREE.TextureLoader();
+    const path =
+      colorNum === 6
+        ? "/Plates/Metallic/DefaultMaterial_Base_color_sRGB.png"
+        : `/Plates/Colors/Color${colorNum}.png`;
+    const newColorTexture = prepareColorTexture(textureLoader.load(path));
+
+    meshRef.current.traverse((child) => {
+      if (
+        child instanceof THREE.Mesh &&
+        child.material instanceof THREE.MeshStandardMaterial
+      ) {
+        // Only update the color texture for the main plate material
+        if (
+          child.name.toLowerCase().includes("plate") ||
+          child.name.toLowerCase().includes("surface") ||
+          child.geometry.attributes.position.count > 1000
+        ) {
+          if (child.material.map) child.material.map.dispose();
+          child.material.map = newColorTexture;
+          child.material.needsUpdate = true;
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (!mountRef.current) return;
+
+    setIsLoading(true);
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf0f0f0);
+    sceneRef.current = scene;
+
+    // Camera setup
+    const camera = new THREE.PerspectiveCamera(
+      50, // Reduced FOV for better view of the plate
+      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(0, 0, 3); // Moved camera back slightly
+
+    // Renderer setup - Enable physically based rendering
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    rendererRef.current = renderer;
+    mountRef.current.appendChild(renderer.domElement);
+
+    // Enhanced lighting setup for license plate viewing
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Increased ambient for better visibility
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Reduced intensity
+    directionalLight.position.set(5, 5, 5); // Closer position
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 2048;
+    directionalLight.shadow.mapSize.height = 2048;
+    directionalLight.shadow.camera.near = 0.1;
+    directionalLight.shadow.camera.far = 50;
+    directionalLight.shadow.camera.left = -5;
+    directionalLight.shadow.camera.right = 5;
+    directionalLight.shadow.camera.top = 5;
+    directionalLight.shadow.camera.bottom = -5;
+    scene.add(directionalLight);
+
+    // Additional softer lighting for even illumination
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    fillLight.position.set(-5, 3, 2);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    rimLight.position.set(0, -5, -5);
+    scene.add(rimLight);
+
+    // Environment map for reflections
+    const addEnvironmentMap = async () => {
+      try {
+        const { RGBELoader } = await import(
+          "three/examples/jsm/loaders/RGBELoader.js"
+        );
+        // For now, we'll use a simple cube camera for environment reflection
+        const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256);
+        const cubeCamera = new THREE.CubeCamera(0.1, 1000, cubeRenderTarget);
+        scene.add(cubeCamera);
+        return cubeRenderTarget.texture;
+      } catch (error) {
+        console.log("Environment map not available, using basic setup");
+        return null;
+      }
+    };
+
+    // Load FBX model with PBR materials
+    const loadModel = async () => {
+      try {
+        // Import required loaders
+        const { FBXLoader } = await import(
+          "three/examples/jsm/loaders/FBXLoader.js"
+        );
+        const { OrbitControls } = await import(
+          "three/examples/jsm/controls/OrbitControls.js"
+        );
+
+        // Add orbit controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = true;
+        controls.enablePan = false;
+        controls.autoRotate = false;
+        controls.autoRotateSpeed = 2.0;
+        controls.target.set(0, 0, 0);
+
+        // Load textures for materials
+        const textureLoader = new THREE.TextureLoader();
+
+        // Load base color from Metallic folder (also used for Metallic option)
+        const baseColorTexture = prepareColorTexture(
+          textureLoader.load(
+            "/Plates/Metallic/DefaultMaterial_Base_color_sRGB.png",
+            () => console.log("Base color texture loaded"),
+            undefined,
+            (error) => console.error("Error loading base color texture:", error)
+          )
+        );
+
+        // Color overlay texture (from Colors folder) for options 1-5
+        let colorTexture: THREE.Texture | null = null;
+        if (currentColorOption !== 6) {
+          colorTexture = prepareColorTexture(
+            textureLoader.load(
+              `/Plates/Colors/Color${currentColorOption}.png`,
+              () => console.log(`Color${currentColorOption} texture loaded`),
+              undefined,
+              (error) => console.error("Error loading color texture:", error)
+            )
+          );
+        }
+
+        // PBR material maps from Metallic folder
+        const metallicTexture = prepareDataTexture(
+          textureLoader.load(
+            "/Plates/Metallic/DefaultMaterial_Metallic_Raw.png",
+            () => console.log("Metallic texture loaded"),
+            undefined,
+            (error) => console.error("Error loading metallic texture:", error)
+          )
+        );
+
+        const normalTexture = prepareDataTexture(
+          textureLoader.load(
+            "/Plates/Metallic/DefaultMaterial_Normal_OpenGL_Raw.png",
+            () => console.log("Normal texture loaded"),
+            undefined,
+            (error) => console.error("Error loading normal texture:", error)
+          )
+        );
+
+        const roughnessTexture = prepareDataTexture(
+          textureLoader.load(
+            "/Plates/Metallic/DefaultMaterial_Roughness_Raw.png",
+            () => console.log("Roughness texture loaded"),
+            undefined,
+            (error) => console.error("Error loading roughness texture:", error)
+          )
+        );
+
+        // Create materials for different parts of the plate
+        const plateMaterial = new THREE.MeshStandardMaterial({
+          map: currentColorOption === 6 ? baseColorTexture : (colorTexture as THREE.Texture),
+          metalnessMap: metallicTexture,
+          normalMap: normalTexture,
+          roughnessMap: roughnessTexture,
+          metalness: 0.1,
+          roughness: 0.8,
+          normalScale: new THREE.Vector2(0.5, 0.5), // Subtle normal mapping
+        });
+
+        const frameMaterial = new THREE.MeshStandardMaterial({
+          map: baseColorTexture, // Use base color for frame
+          metalnessMap: metallicTexture,
+          normalMap: normalTexture,
+          roughnessMap: roughnessTexture,
+          metalness: 0.3,
+          roughness: 0.6,
+          normalScale: new THREE.Vector2(1, 1),
+        });
+
+        // Load the FBX model
+        const fbxLoader = new FBXLoader();
+        const modelPath = modelSrc || "/Plates/Model/Plate.fbx";
+
+        fbxLoader.load(
+          modelPath,
+          (object) => {
+            console.log("FBX model loaded successfully");
+
+            // Ensure geometries have a primary UV set and keep UVs within [0,1]
+            object.traverse((child: any) => {
+              if (child instanceof THREE.Mesh && child.geometry) {
+                const geom = child.geometry as THREE.BufferGeometry;
+                const attrs: any = geom.attributes as any;
+                if (!attrs.uv && attrs.uv2) {
+                  geom.setAttribute("uv", attrs.uv2);
+                }
+                if (attrs.uv) {
+                  const uv = attrs.uv as THREE.BufferAttribute;
+                  const arr = uv.array as Float32Array;
+                  for (let i = 0; i < arr.length; i++) {
+                    arr[i] = THREE.MathUtils.clamp(arr[i], 0, 1);
+                  }
+                  uv.needsUpdate = true;
+                }
+              }
+            });
+
+            // Apply different materials to different parts of the model
+            object.traverse((child) => {
+              if (child instanceof THREE.Mesh) {
+                if (
+                  child.name.toLowerCase().includes("plate") ||
+                  child.name.toLowerCase().includes("surface") ||
+                  child.geometry.attributes.position.count > 1000
+                ) {
+                  child.material = plateMaterial;
+                } else {
+                  child.material = frameMaterial;
+                }
+
+                child.castShadow = true;
+                child.receiveShadow = true;
+
+                console.log(
+                  "Mesh found:",
+                  child.name,
+                  "Vertices:",
+                  (child.geometry as THREE.BufferGeometry).attributes.position
+                    .count
+                );
+              }
+            });
+
+            // Center and scale the model
+            const box = new THREE.Box3().setFromObject(object);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+
+            object.position.sub(center);
+            const maxSize = Math.max(size.x, size.y, size.z);
+            const scale = 3 / maxSize; // Slightly smaller scale for better viewing
+            object.scale.setScalar(scale);
+            object.position.set(0, 0, 0);
+
+            // Heuristic: rotate the model so the thinnest dimension becomes depth (Z)
+            // This avoids loading the plate edge-on.
+            const smallestAxis =
+              size.x < size.y
+                ? size.x < size.z
+                  ? "x"
+                  : "z"
+                : size.y < size.z
+                ? "y"
+                : "z";
+            if (smallestAxis === "y") {
+              // Lying in XZ plane – stand it up to face camera
+              object.rotateX(Math.PI / 2);
+            } else if (smallestAxis === "x") {
+              // Thin along X – rotate so Z becomes the thin axis
+              object.rotateZ(Math.PI / 2);
+              object.rotateX(-Math.PI / 2);
+            }
+            // Give a small forward tilt for a nicer initial look
+            object.rotateX(THREE.MathUtils.degToRad(5));
+
+            // Store mesh reference
+            meshRef.current = object;
+
+            scene.add(object);
+            setIsLoading(false);
+          },
+          (progress) => {
+            const percentComplete = (progress.loaded / progress.total) * 100;
+            console.log(
+              "Model loading progress:",
+              percentComplete.toFixed(2) + "%"
+            );
+          },
+          (error) => {
+            console.error("Error loading FBX model:", error);
+            setIsLoading(false);
+          }
+        );
+
+        // Animation loop
+        const animate = () => {
+          animationIdRef.current = requestAnimationFrame(animate);
+          controls.update();
+          renderer.render(scene, camera);
+        };
+        animate();
+      } catch (error) {
+        console.error("Error setting up 3D scene:", error);
+        setIsLoading(false);
+      }
+    };
+
+    loadModel();
+
+    // Handle window resize
+    const handleResize = () => {
+      if (!mountRef.current) return;
+
+      camera.aspect =
+        mountRef.current.clientWidth / mountRef.current.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(
+        mountRef.current.clientWidth,
+        mountRef.current.clientHeight
+      );
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
+
+      if (
+        mountRef.current &&
+        renderer.domElement &&
+        mountRef.current.contains(renderer.domElement)
+      ) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
+
+      renderer.dispose();
+
+      // Dispose of geometries, materials, and textures
+      scene.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          child.geometry.dispose();
+          if (child.material instanceof THREE.Material) {
+            const material = child.material as any;
+            if (material.map && typeof material.map.dispose === "function") {
+              material.map.dispose();
+            }
+            if (
+              material.metalnessMap &&
+              typeof material.metalnessMap.dispose === "function"
+            ) {
+              material.metalnessMap.dispose();
+            }
+            if (
+              material.normalMap &&
+              typeof material.normalMap.dispose === "function"
+            ) {
+              material.normalMap.dispose();
+            }
+            if (
+              material.roughnessMap &&
+              typeof material.roughnessMap.dispose === "function"
+            ) {
+              material.roughnessMap.dispose();
+            }
+            child.material.dispose();
+          }
+        }
+      });
+    };
+  }, [modelSrc, currentColorOption]);
+
+  // Update color when prop changes
+  useEffect(() => {
+    if (colorOption !== currentColorOption) {
+      setCurrentColorOption(colorOption);
+      if (meshRef.current) {
+        updateMeshColor(colorOption);
+      }
+    }
+  }, [colorOption]);
+
+  return (
+    <div className={styles.viewer3DContainer}>
+      {title && <h2 className={styles.viewerTitle}>{title}</h2>}
+
+      {/* Color Selector */}
+      <div className={styles.colorSelector}>
+        <span className={styles.colorLabel}>Color Options:</span>
+        <div className={styles.colorOptions}>
+          {[1, 2, 3, 4, 5, 6].map((colorNum) => (
+            <button
+              key={colorNum}
+              className={`${styles.colorButton} ${
+                currentColorOption === colorNum ? styles.active : ""
+              }`}
+              onClick={() => handleColorChange(colorNum)}
+              title={colorNum === 6 ? "Metallic" : `Color ${colorNum}`}
+            >
+              <img
+                src={
+                  colorNum === 6
+                    ? "/Plates/Metallic/DefaultMaterial_Base_color_sRGB.png"
+                    : `/Plates/Colors/Color${colorNum}.png`
+                }
+                alt={colorNum === 6 ? "Metallic" : `Color ${colorNum}`}
+                className={styles.colorPreview}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.viewer3D} ref={mountRef}>
+        {isLoading && (
+          <div className={styles.loadingOverlay}>
+            <div className={styles.loadingSpinner}></div>
+            <p className={styles.loadingText}>Loading 3D Model...</p>
+          </div>
+        )}
+      </div>
+
+      <div className={styles.controls}>
+        <p className={styles.controlsText}>
+          Auto-rotating • Drag to rotate • Scroll to zoom • Interactive 3D model
+          with PBR materials
+        </p>
+      </div>
+    </div>
+  );
+}

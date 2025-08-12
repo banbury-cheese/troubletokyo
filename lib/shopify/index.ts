@@ -311,7 +311,7 @@ export async function getCollectionProducts({
 }): Promise<Product[]> {
   'use cache';
   cacheTag(TAGS.collections, TAGS.products);
-  cacheLife('days');
+  cacheLife('seconds');
 
   const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
     query: getCollectionProductsQuery,
