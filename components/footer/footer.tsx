@@ -15,13 +15,13 @@ export default function Footer({ color = "var(--white)" }: FooterProps) {
     const footerLinks = document.querySelectorAll(".footer-link");
 
     footerLinks.forEach((link) => {
-      let linkChars = new SplitText(link, {
+      const linkChars = new SplitText(link, {
         type: "chars",
         charsClass: "char-footer",
       });
 
       const handleMouseEnter = () => {
-        const footerLinkAni = gsap
+        gsap
           .fromTo(
             linkChars.chars,
             { opacity: 1 },
@@ -36,7 +36,7 @@ export default function Footer({ color = "var(--white)" }: FooterProps) {
       };
 
       const handleMouseLeave = () => {
-        const footerLinkAni = gsap
+        gsap
           .to(linkChars.chars, {
             stagger: 0.05,
             opacity: 1,

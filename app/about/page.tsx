@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./about.module.scss";
-import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { Logo } from "@/components/logo";
 import MenuNav from "@/components/MenuNav/MenuNav";
@@ -69,12 +68,12 @@ export default function AboutPage() {
 
                 <p className={styles.description}>
                   When you purchase our goods, know that every dollar speaks
-                  volumes. It's a payout for the copyrights to the creative
+                  volumes. It&apos;s a payout for the copyrights to the creative
                   directors, project managers, and photographers we support and
                   collaborate with. We were all on our separate paths, honing
-                  our skills, and now we've come together to create together,
-                  pouring everything we have into the culture of our brand, and
-                  we'd love for you to be part of the journey.
+                  our skills, and now we&apos;ve come together to create
+                  together, pouring everything we have into the culture of our
+                  brand, and we&apos;d love for you to be part of the journey.
                 </p>
               </div>
 

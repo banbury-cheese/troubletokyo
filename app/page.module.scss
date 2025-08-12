@@ -1,3 +1,5 @@
+@import "../styles/breakpoints.scss";
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -192,14 +194,14 @@
   }
 }
 
-// Global h-effect animation styles
-:global(.h-effect) {
+// H-effect animation styles
+.hEffect {
   position: relative;
   overflow: hidden;
   height: 1.2em;
   line-height: 1.2;
 
-  .h-item {
+  :global(.h-item) {
     display: block;
     margin: 0;
     font-size: inherit;

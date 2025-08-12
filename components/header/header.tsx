@@ -15,13 +15,13 @@ export default function Header() {
     const headerLinks = document.querySelectorAll(".header-link");
 
     headerLinks.forEach((link) => {
-      let linkChars = new SplitText(link, {
+      const linkChars = new SplitText(link, {
         type: "chars",
         charsClass: "char-header",
       });
 
       const handleMouseEnter = () => {
-        const headerLinkAni = gsap
+        gsap
           .fromTo(
             linkChars.chars,
             { opacity: 1 },
@@ -36,7 +36,7 @@ export default function Header() {
       };
 
       const handleMouseLeave = () => {
-        const headerLinkAni = gsap
+        gsap
           .to(linkChars.chars, {
             stagger: 0.05,
             opacity: 1,
@@ -60,7 +60,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.navigation}>
+      <div className={`${styles.navigation} ${styles.charHeader}`}>
         <Link href={"/"} className={styles.backButton}>
           <BackIcon />
         </Link>

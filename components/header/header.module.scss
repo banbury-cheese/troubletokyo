@@ -1,3 +1,5 @@
+@import "../../styles/breakpoints.scss";
+
 .header {
   background-color: var(--red);
   height: 20vh;
@@ -85,6 +87,8 @@
 }
 
 // Header character animation styles
-:global(.char-header) {
-  display: inline-block;
+.charHeader {
+  :global(.char-header) {
+    display: inline-block;
+  }
 }

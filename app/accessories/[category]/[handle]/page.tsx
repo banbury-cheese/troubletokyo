@@ -1,6 +1,5 @@
 "useClient";
 
-import Link from "next/link";
 import styles from "./accessory.module.scss";
 import Footer from "@/components/footer/footer";
 import ImageCarousel from "@/components/imageCarousel/imageCarousel";
@@ -15,7 +14,6 @@ import { ProductProvider } from "@/components/product/product-context";
 import Header from "@/components/header/header";
 import { VariantSelector } from "@/components/variantSelector/variantSelector";
 import { AddToCart } from "@/components/cart/add-to-cart";
-import clsx from "clsx";
 import Price from "@/components/price";
 
 export async function generateMetadata(props: {
