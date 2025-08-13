@@ -169,7 +169,35 @@ export default async function AccessoryProductPage(props: {
           </div>
         </main>
 
-        <ImageCarousel />
+        {/* Image Carousel - Use plate images for plate pages */}
+        {isCarPlate ? (
+          <ImageCarousel
+            images={[
+              {
+                id: 1,
+                src: "/images/carousel/plates/1.webp",
+                alt: "Car Plate Design 1",
+              },
+              {
+                id: 2,
+                src: "/images/carousel/plates/2.webp",
+                alt: "Car Plate Design 2",
+              },
+              {
+                id: 3,
+                src: "/images/carousel/plates/3.webp",
+                alt: "Car Plate Design 3",
+              },
+              {
+                id: 3,
+                src: "/images/carousel/plates/4.webp",
+                alt: "Car Plate Design 4",
+              },
+            ]}
+          />
+        ) : (
+          <ImageCarousel />
+        )}
 
         {/* 3D Plate Viewer - Only show for car plates */}
         {isCarPlate && (

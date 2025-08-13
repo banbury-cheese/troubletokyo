@@ -16,7 +16,11 @@ interface CarouselImage {
   alt: string;
 }
 
-const images: CarouselImage[] = [
+interface ImageCarouselProps {
+  images?: CarouselImage[];
+}
+
+const defaultImages: CarouselImage[] = [
   {
     id: 1,
     src: "/images/apparels/shirts/Advan T-shirt/closeup.jpg",
@@ -69,7 +73,7 @@ const images: CarouselImage[] = [
   },
 ];
 
-export default function ImageCarousel() {
+export default function ImageCarousel({ images = defaultImages }: ImageCarouselProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<CarouselImage | null>(
     null
@@ -162,7 +166,8 @@ export default function ImageCarousel() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView="auto"
-        loop={true}
+        loop={false}
+        initialSlide={Math.floor(images.length / 2)}
         coverflowEffect={{
           rotate: 0,
           stretch: 10,
