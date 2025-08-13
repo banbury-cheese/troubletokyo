@@ -70,6 +70,26 @@ export default async function AccessoryProductPage(props: {
   // Use the new FBX model from the Plates folder
   const modelSrc = "/Plates/Model/Plate.fbx";
 
+  // Detect color from URL handle
+  const getColorOptionFromHandle = (handle: string): number => {
+    const handleLower = handle.toLowerCase();
+
+    if (handleLower.includes("blue")) return 1;
+    if (handleLower.includes("green")) return 2;
+    if (handleLower.includes("red")) return 3;
+    if (handleLower.includes("white")) return 4;
+    if (handleLower.includes("yellow")) return 5;
+    if (handleLower.includes("silver") || handleLower.includes("metallic"))
+      return 6;
+
+    // Default to blue if no color is detected
+    return 1;
+  };
+
+  const plateColorOption = isCarPlate
+    ? getColorOptionFromHandle(params.handle)
+    : 1;
+
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -156,7 +176,7 @@ export default async function AccessoryProductPage(props: {
           <PlateViewer3D
             modelSrc={modelSrc}
             title={`${product.title} - Interactive 3D View`}
-            colorOption={1}
+            colorOption={plateColorOption}
           />
         )}
 

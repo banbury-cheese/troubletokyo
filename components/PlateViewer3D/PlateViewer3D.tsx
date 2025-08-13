@@ -7,15 +7,13 @@ import styles from "./PlateViewer3D.module.scss";
 interface PlateViewer3DProps {
   modelSrc?: string; // Optional since we'll use the FBX model
   title?: string;
-  colorOption?: number; // 1-5 for different color options
-  onColorChange?: (colorOption: number) => void; // Callback for color changes
+  colorOption?: number; // 1-6 for different color options (1=blue, 2=green, 3=red, 4=white, 5=yellow, 6=silver/metallic)
 }
 
 export default function PlateViewer3D({
   modelSrc,
   title,
   colorOption = 1,
-  onColorChange,
 }: PlateViewer3DProps) {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -57,9 +55,6 @@ export default function PlateViewer3D({
   // Handle color change
   const handleColorChange = (newColorOption: number) => {
     setCurrentColorOption(newColorOption);
-    if (onColorChange) {
-      onColorChange(newColorOption);
-    }
 
     // Update material if mesh is loaded
     if (meshRef.current) {
@@ -72,10 +67,16 @@ export default function PlateViewer3D({
     if (!meshRef.current) return;
 
     const textureLoader = new THREE.TextureLoader();
-    const path =
-      colorNum === 6
-        ? "/Plates/Metallic/DefaultMaterial_Base_color_sRGB.png"
-        : `/Plates/Colors/Color${colorNum}.png`;
+    let path: string;
+
+    if (colorNum === 6) {
+      path = "/Plates/Metallic/DefaultMaterial_Base_color_sRGB.png";
+    } else {
+      const colorNames = ["blue", "green", "red", "white", "yellow"];
+      const colorName = colorNames[colorNum - 1];
+      path = `/Plates/Colors/${colorName}.png`;
+    }
+
     const newColorTexture = prepareColorTexture(textureLoader.load(path));
 
     meshRef.current.traverse((child) => {
@@ -213,12 +214,15 @@ export default function PlateViewer3D({
         // Color overlay texture (from Colors folder) for options 1-5
         let colorTexture: THREE.Texture | null = null;
         if (currentColorOption !== 6) {
+          const colorNames = ["blue", "green", "red", "white", "yellow"];
+          const colorName = colorNames[currentColorOption - 1];
           colorTexture = prepareColorTexture(
             textureLoader.load(
-              `/Plates/Colors/Color${currentColorOption}.png`,
-              () => console.log(`Color${currentColorOption} texture loaded`),
+              `/Plates/Colors/${colorName}.png`,
+              () => console.log(`${colorName} texture loaded`),
               undefined,
-              (error) => console.error("Error loading color texture:", error)
+              (error) =>
+                console.error(`Error loading ${colorName} texture:`, error)
             )
           );
         }
@@ -253,7 +257,10 @@ export default function PlateViewer3D({
 
         // Create materials for different parts of the plate
         const plateMaterial = new THREE.MeshStandardMaterial({
-          map: currentColorOption === 6 ? baseColorTexture : (colorTexture as THREE.Texture),
+          map:
+            currentColorOption === 6
+              ? baseColorTexture
+              : (colorTexture as THREE.Texture),
           metalnessMap: metallicTexture,
           normalMap: normalTexture,
           roughnessMap: roughnessTexture,
@@ -471,34 +478,7 @@ export default function PlateViewer3D({
 
   return (
     <div className={styles.viewer3DContainer}>
-      {title && <h2 className={styles.viewerTitle}>{title}</h2>}
-
-      {/* Color Selector */}
-      <div className={styles.colorSelector}>
-        <span className={styles.colorLabel}>Color Options:</span>
-        <div className={styles.colorOptions}>
-          {[1, 2, 3, 4, 5, 6].map((colorNum) => (
-            <button
-              key={colorNum}
-              className={`${styles.colorButton} ${
-                currentColorOption === colorNum ? styles.active : ""
-              }`}
-              onClick={() => handleColorChange(colorNum)}
-              title={colorNum === 6 ? "Metallic" : `Color ${colorNum}`}
-            >
-              <img
-                src={
-                  colorNum === 6
-                    ? "/Plates/Metallic/DefaultMaterial_Base_color_sRGB.png"
-                    : `/Plates/Colors/Color${colorNum}.png`
-                }
-                alt={colorNum === 6 ? "Metallic" : `Color ${colorNum}`}
-                className={styles.colorPreview}
-              />
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* {title && <h2 className={styles.viewerTitle}>{title}</h2>} */}
 
       <div className={styles.viewer3D} ref={mountRef}>
         {isLoading && (
@@ -509,12 +489,12 @@ export default function PlateViewer3D({
         )}
       </div>
 
-      <div className={styles.controls}>
+      {/* <div className={styles.controls}>
         <p className={styles.controlsText}>
           Auto-rotating • Drag to rotate • Scroll to zoom • Interactive 3D model
           with PBR materials
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
