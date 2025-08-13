@@ -66,7 +66,7 @@ export default function Footer({ color = "var(--white)" }: FooterProps) {
         </div>
         <div className={styles.footerRight}>
           <Link
-            href="mailto:tamedtoronto@gmail.com"
+            href="mailto:contact@trouble.tokyo"
             className={`${styles.footerLink} footer-link`}
           >
             CONTACT
