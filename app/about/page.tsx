@@ -24,10 +24,18 @@ export default function AboutPage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Set initial states
-      gsap.set([mainDescRef.current, descRef.current, italicRef.current, faqRef.current], {
-        opacity: 0,
-        y: 30,
-      });
+      gsap.set(
+        [
+          mainDescRef.current,
+          descRef.current,
+          italicRef.current,
+          faqRef.current,
+        ],
+        {
+          opacity: 0,
+          y: 30,
+        }
+      );
 
       gsap.set(backgroundRef.current, {
         scale: 1.1,
@@ -56,44 +64,63 @@ export default function AboutPage() {
         duration: 1.5,
         ease: "power2.out",
       })
-      // Animate logo outlines drawing
-      .to(".logo-outline", {
-        drawSVG: "100%",
-        duration: 2,
-        ease: "power2.out",
-        stagger: 0.2,
-      }, "-=1")
-      // Animate logo text appearing
-      .to(".logo-text", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.1,
-      }, "-=0.5")
-      // Animate main description
-      .to(mainDescRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out",
-      }, "-=0.4")
-      // Animate other content with stagger
-      .to([descRef.current, italicRef.current], {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.2,
-      }, "-=0.2")
-      // Animate FAQ section
-      .to(faqRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      }, "-=0.2");
-
+        // Animate logo outlines drawing
+        .to(
+          ".logo-outline",
+          {
+            drawSVG: "100%",
+            duration: 2,
+            ease: "power2.out",
+            stagger: 0.2,
+          },
+          "-=1"
+        )
+        // Animate logo text appearing
+        .to(
+          ".logo-text",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.1,
+          },
+          "-=0.5"
+        )
+        // Animate main description
+        .to(
+          mainDescRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        // Animate other content with stagger
+        .to(
+          [descRef.current, italicRef.current],
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: 0.2,
+          },
+          "-=0.2"
+        )
+        // Animate FAQ section
+        .to(
+          faqRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "-=0.2"
+        );
     });
 
     return () => ctx.revert();
