@@ -19,6 +19,7 @@ export default function Home() {
   const logoRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
   const videoOverlayRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Set initial states
@@ -37,6 +38,10 @@ export default function Home() {
     });
     gsap.set(videoOverlayRef.current, {
       opacity: 1,
+    });
+    gsap.set(scrollIndicatorRef.current, {
+      opacity: 0,
+      y: 20,
     });
 
     // Create main timeline
@@ -72,6 +77,17 @@ export default function Home() {
           ease: "power2.out",
         },
         "-=0"
+      )
+      // Animate scroll indicator
+      .to(
+        scrollIndicatorRef.current,
+        {
+          opacity: 0.8,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.2"
       )
       // Fade out video overlay to reveal video
       .to(
@@ -122,7 +138,6 @@ export default function Home() {
       };
     }
   }, []);
-
 
   useEffect(() => {
     // Section hover animations with character roll effect
@@ -235,6 +250,16 @@ export default function Home() {
     }
   };
 
+  const scrollToContent = () => {
+    const sectionsGrid = document.querySelector(`.${styles.sectionsGrid}`);
+    if (sectionsGrid) {
+      sectionsGrid.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <div className={styles.container}>
       {/* Sound Toggle Button */}
@@ -270,6 +295,26 @@ export default function Home() {
           <p ref={taglineRef} className={styles.tagline}>
             {/* Trust in Trouble */}
           </p>
+        </div>
+
+        {/* Scroll Down Indicator */}
+        <div
+          ref={scrollIndicatorRef}
+          className={styles.scrollIndicator}
+          onClick={scrollToContent}
+        >
+          <div className={styles.scrollArrow}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M7 10L12 15L17 10"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <span className={styles.scrollText}>SCROLL</span>
         </div>
       </section>
 
