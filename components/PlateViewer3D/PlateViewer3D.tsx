@@ -105,7 +105,7 @@ export default function PlateViewer3D({
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf0f0f0);
+    scene.background = new THREE.Color(0xf8f8f8); // Slightly warmer background
     sceneRef.current = scene;
 
     // Camera setup
@@ -121,6 +121,7 @@ export default function PlateViewer3D({
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
+      powerPreference: "high-performance",
     });
     renderer.setSize(
       mountRef.current.clientWidth,
@@ -130,7 +131,7 @@ export default function PlateViewer3D({
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
+    renderer.toneMappingExposure = 1.0; // Slightly reduced for better color accuracy
     rendererRef.current = renderer;
     mountRef.current.appendChild(renderer.domElement);
 
