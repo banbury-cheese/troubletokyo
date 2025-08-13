@@ -300,7 +300,7 @@ export default function MediaPage() {
       <div className={styles.cameraContainer}>
         <div className={styles.camera}>
           <Image
-            src="/images/media/camera.png"
+            src="/images/media/camera.webp"
             alt="Canon Camera"
             fill
             className={styles.cameraImage}
