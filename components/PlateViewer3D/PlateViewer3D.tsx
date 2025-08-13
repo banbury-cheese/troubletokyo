@@ -115,7 +115,7 @@ export default function PlateViewer3D({
       0.1,
       1000
     );
-    camera.position.set(0, 0, 3); // Moved camera back slightly
+    camera.position.set(0, 0, 3.5); // Moved camera back slightly
 
     // Renderer setup - Enable physically based rendering
     const renderer = new THREE.WebGLRenderer({
