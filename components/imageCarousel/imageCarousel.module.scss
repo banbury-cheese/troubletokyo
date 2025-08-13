@@ -25,10 +25,12 @@
 
   @include media("<tablet") {
     padding: 40px 0;
+    height: 40vh;
   }
 
   @include media("<phone") {
     padding: 30px 0;
+    height: 40vh;
   }
 
   :global(.swiper-pagination) {
