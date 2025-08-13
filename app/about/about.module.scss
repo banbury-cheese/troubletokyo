@@ -90,17 +90,6 @@
   color: var(--white);
 }
 
-.slogan {
-  font-family: var(--fontSecondary);
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  margin: 40px 0;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 10vh;
-}
-
 .additionalContent {
   margin: 40px 0;
 
@@ -173,10 +162,6 @@
   .troubleLogo {
     width: 320px;
   }
-
-  .slogan {
-    font-size: 20px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -193,10 +178,6 @@
     width: 280px;
   }
 
-  .slogan {
-    font-size: 15px;
-  }
-
   .mainDescription,
   .description {
     font-size: 14px;
@@ -211,10 +192,6 @@
 @media (max-width: 480px) {
   .troubleLogo {
     width: 240px;
-  }
-
-  .slogan {
-    font-size: 15px;
   }
 
   .mainDescription,
