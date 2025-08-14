@@ -44,6 +44,12 @@
   }
 }
 
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .cartEmpty {
   margin-top: 5rem;
   display: flex;

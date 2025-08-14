@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import { CartProvider } from "@/components/cart/cart-context";
+import { CurrencyProvider } from "@/components/cart/currency-context";
 import { getCart } from "@/lib/shopify";
 import { Toaster } from "sonner";
 import CartModal from "@/components/cart/modal/modal";
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={``}>
-        <CartProvider cartPromise={cart}>
-          {children}
-          <Toaster />
-          <CartModal />
-        </CartProvider>
+        <CurrencyProvider>
+          <CartProvider cartPromise={cart}>
+            {children}
+            <Toaster />
+            <CartModal />
+          </CartProvider>
+        </CurrencyProvider>
       </body>
     </html>
   );

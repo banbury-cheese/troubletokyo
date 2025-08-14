@@ -1,0 +1,113 @@
+.currencySelector {
+  position: relative;
+  display: inline-block;
+}
+
+.currencyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--muted);
+    border-color: var(--border-hover);
+  }
+
+  &:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.currencySymbol {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.currencyCode {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+  
+  &.arrowUp {
+    transform: rotate(180deg);
+  }
+}
+
+.currencyDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.25rem;
+  background: var(--white);
+//   border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  z-index: 50;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.currencyOption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: var(--muted);
+  }
+
+  &.selected {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  &:first-child {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
+
+.currencyDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.currencyName {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .currencyDropdown {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  }
+}

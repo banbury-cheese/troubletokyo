@@ -9,7 +9,7 @@ import {
 } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import LoadingDots from "@/components/loading-dots";
-import Price from "@/components/price";
+import Price from "@/components/price-with-currency";
 import { DEFAULT_OPTION } from "@/lib/constants";
 import { createUrl } from "@/lib/utils";
 import Image from "next/image";
@@ -21,6 +21,7 @@ import { useCart } from "../cart-context";
 import { DeleteItemButton } from "../delete-item-button";
 import { EditItemQuantityButton } from "../edit-item-quantity-button";
 import OpenCart from "@/components/cart/OpenCart/openCart";
+import CurrencySelector from "../currency-selector";
 import styles from "./modal.module.scss";
 
 type MerchandiseSearchParams = {
@@ -86,7 +87,10 @@ export default function CartModal() {
           >
             <DialogPanel className={styles.modalPanel}>
               <div className={styles.modalHeader}>
-                <p>Cart</p>
+                <div className={styles.headerLeft}>
+                  <p>Cart</p>
+                  <CurrencySelector />
+                </div>
                 <button aria-label="Close cart" onClick={closeCart}>
                   <CloseCart />
                 </button>
@@ -173,6 +177,7 @@ export default function CartModal() {
                                   currencyCode={
                                     item.cost.totalAmount.currencyCode
                                   }
+                                  convertCurrency={true}
                                 />
                                 <div className={styles.quantityControls}>
                                   <EditItemQuantityButton
@@ -202,6 +207,7 @@ export default function CartModal() {
                         className={styles.summaryPrice}
                         amount={cart.cost.totalTaxAmount.amount}
                         currencyCode={cart.cost.totalTaxAmount.currencyCode}
+                        convertCurrency={true}
                       />
                     </div>
                     <div className={styles.summaryRow}>
@@ -216,6 +222,7 @@ export default function CartModal() {
                         className={styles.summaryPrice}
                         amount={cart.cost.totalAmount.amount}
                         currencyCode={cart.cost.totalAmount.currencyCode}
+                        convertCurrency={true}
                       />
                     </div>
                   </div>
