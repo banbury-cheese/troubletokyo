@@ -16,6 +16,7 @@
 .sizeButtons {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 4px;
 
   @include media("<tablet") {
     justify-content: center;
