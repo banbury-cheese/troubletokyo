@@ -42,11 +42,6 @@ export default function LaunchTimer() {
     setLocalLaunchTime(localTime);
   }, []);
 
-  // Don't render timer if disabled in config
-  if (!LAUNCH_TIMER_CONFIG.ENABLE_TIMER) {
-    return null;
-  }
-
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -93,6 +88,11 @@ export default function LaunchTimer() {
       );
     }
   }, []);
+
+  // Don't render timer if disabled in config
+  if (!LAUNCH_TIMER_CONFIG.ENABLE_TIMER) {
+    return null;
+  }
 
   if (isLaunched) {
     return (
