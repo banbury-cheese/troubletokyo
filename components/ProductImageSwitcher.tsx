@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import styles from "./ProductImageSwitcher.module.scss";
 
 type ImageLike = {
   url: string;
@@ -26,37 +27,60 @@ export default function ProductImageSwitcher({
 }: Props) {
   // Default to index 1 to match existing behavior
   const [index, setIndex] = useState(1);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [imageTransition, setImageTransition] = useState(false);
   const hasAltImage = !!images?.[2]?.url;
 
   const currentImage = images?.[index] ?? images?.[1] ?? images?.[0];
   const alt = currentImage?.altText || `${title} image`;
 
+  const handleFlip = useCallback(() => {
+    if (isFlipping) return; // Prevent multiple clicks during animation
+
+    setIsFlipping(true);
+    setImageTransition(true);
+
+    // Change image index at the midpoint of the animation for smoother transition
+    setTimeout(() => {
+      setIndex((prev) => (prev === 1 ? 2 : 1));
+    }, 200);
+
+    // Reset animation states
+    setTimeout(() => {
+      setIsFlipping(false);
+    }, 600);
+
+    // Reset image transition slightly earlier to prevent jitter
+    setTimeout(() => {
+      setImageTransition(false);
+    }, 400);
+  }, [isFlipping]);
+
   return (
-    <div className={sectionClassName} style={{ position: "relative", flexDirection: "column" }}>
+    <div className={`${styles.imageSwitcher} ${sectionClassName || ""}`}>
       {currentImage?.url ? (
-        <img
-          src={currentImage.url}
-          alt={alt}
-          width={width}
-          height={height}
-          className={imageClassName}
-        />
+        <div className={styles.imageContainer}>
+          <img
+            src={currentImage.url}
+            alt={alt}
+            width={width}
+            height={height}
+            className={`${styles.image} ${
+              imageTransition ? styles.imageTransition : ""
+            } ${imageClassName || ""}`}
+          />
+        </div>
       ) : null}
 
       {hasAltImage ? (
         <button
           type="button"
-          onClick={() => setIndex((prev) => (prev === 1 ? 2 : 1))}
+          onClick={handleFlip}
+          disabled={isFlipping}
           aria-label={index === 1 ? "Show alternate image" : "Show first image"}
-          style={{
-            marginTop: "-16vh",
-            // background: "var(--red)",
-            // border: "1px solid var(--black)",
-            padding: "0.25rem 0.5rem",
-            // rotate: "-30deg",
-            cursor: "pointer",
-          }}
-          className="text-[var(--red)] underline"
+          className={`${styles.flipButton} ${
+            isFlipping ? styles.flipping : ""
+          }`}
         >
           {index === 1 ? "Flip" : "Flip"}
         </button>
