@@ -18,6 +18,7 @@ import { VariantSelector } from "@/components/variantSelector/variantSelector";
 import { AddToCart } from "@/components/cart/add-to-cart";
 import Price from "@/components/price";
 import SizeChartLink from "@/components/sizeChart/sizeChartLink";
+import ProductImageSwitcher from "@/components/ProductImageSwitcher";
 
 export async function generateMetadata(props: {
   params: Promise<{ handle: string }>;
@@ -97,15 +98,19 @@ export default async function ApparelProductPage(props: {
         <main className={styles.main}>
           <div className={styles.productContainer}>
             {/* Product Image */}
-            <div className={styles.productImageSection}>
-              <img
-                src={product.images[1].url}
-                alt={`${product.title} image`}
-                width={400}
-                height={500}
-                className={styles.productImage}
-              />
-            </div>
+            <ProductImageSwitcher
+              images={
+                product.images as unknown as {
+                  url: string;
+                  altText?: string | null;
+                }[]
+              }
+              title={product.title}
+              sectionClassName={styles.productImageSection}
+              imageClassName={styles.productImage}
+              width={400}
+              height={500}
+            />
 
             {/* Product Details */}
             <div className={styles.productDetails}>
@@ -176,7 +181,9 @@ export default async function ApparelProductPage(props: {
               <ImageCarousel
                 images={Array.from({ length: 4 }, (_, i) => ({
                   id: i + 1,
-                  src: `/images/carousel/apparel/collegiate-hoodie/${i + 1}.webp`,
+                  src: `/images/carousel/apparel/collegiate-hoodie/${
+                    i + 1
+                  }.webp`,
                   alt: `Collegiate Hoodie Image ${i + 1}`,
                 }))}
               />
