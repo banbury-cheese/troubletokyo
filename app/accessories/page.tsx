@@ -41,7 +41,7 @@ export default function AccessoriesPage() {
   return (
     <div className={styles.accessoriesPage}>
       <PageHeader
-        title="ACCESSORIES"
+        title="PRODUCTS"
         backgroundImage="/images/accessories/cover.jpg"
         backgroundAlt="Accessories Background"
       />

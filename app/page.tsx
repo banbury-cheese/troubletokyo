@@ -340,8 +340,8 @@ export default function Home() {
         <Link href="/accessories" className={`${styles.section} section-link`}>
           <div className={styles.sectionContent}>
             <div className={`${styles.sectionTitle} section-title h-effect`}>
-              <h2 className="h-item">ACCESSORIES</h2>
-              <h2 className="h-item">ACCESSORIES</h2>
+              <h2 className="h-item">PRODUCTS</h2>
+              <h2 className="h-item">PRODUCTS</h2>
             </div>
           </div>
           <Image

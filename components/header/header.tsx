@@ -77,7 +77,7 @@ export default function Header() {
             href="/accessories"
             className={`${styles.menuItem} header-link`}
           >
-            ACCESSORIES
+            PRODUCTS
           </Link>
           <Link href="/about" className={`${styles.menuItem} header-link`}>
             ABOUT

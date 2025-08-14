@@ -8,7 +8,7 @@ import { BackIcon } from "../icons";
 
 const menuItems = [
   { href: "/apparels", label: "Apparel" },
-  { href: "/accessories", label: "Accessories" },
+  { href: "/accessories", label: "Products" },
   { href: "/about", label: "About" },
   { href: "/media", label: "Media" },
   { href: "/faq", label: "FAQ" },
