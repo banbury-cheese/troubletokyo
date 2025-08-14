@@ -181,7 +181,7 @@ export default function ImageCarousel({ images = defaultImages }: ImageCarouselP
         modules={[EffectCoverflow, Pagination]}
         className={styles.swiper}
       >
-        {images.map((image, index) => (
+        {images.map((image) => (
           <SwiperSlide key={image.id} className={styles.swiperSlide}>
             <div
               className={styles.carouselItem}
