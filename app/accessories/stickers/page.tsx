@@ -1,6 +1,7 @@
 import Footer from "@/components/footer/footer";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import ProductGrid from "@/components/ProductGrid/ProductGrid";
+import ShowAllButton from "@/components/ShowAllButton/ShowAllButton";
 import { getCollectionProducts } from "@/lib/shopify";
 import styles from "./stickers.module.scss";
 
@@ -17,6 +18,7 @@ export default async function StickersPage() {
         backgroundAlt="Stickers Background"
       />
       <ProductGrid products={stickerItems} basePath="/accessories/stickers" />
+      <ShowAllButton />
       <Footer color="var(--darkRed)" />
     </div>
   );

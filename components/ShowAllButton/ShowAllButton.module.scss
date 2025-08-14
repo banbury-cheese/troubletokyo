@@ -1,0 +1,39 @@
+.showAllContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+}
+
+.showAllButton {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--darkRed);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 2px solid var(--darkRed);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+    color: var(--darkRed);
+    border-color: var(--darkRed);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+@media (max-width: 768px) {
+  .showAllButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

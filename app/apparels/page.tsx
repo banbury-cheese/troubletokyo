@@ -1,6 +1,7 @@
 import Footer from "@/components/footer/footer";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import ProductGrid from "@/components/ProductGrid/ProductGrid";
+import ShowAllButton from "@/components/ShowAllButton/ShowAllButton";
 import { getCollectionProducts } from "@/lib/shopify";
 import styles from "./apparels.module.scss";
 
@@ -17,6 +18,7 @@ export default async function ApparelsPage() {
         backgroundAlt="Apparel Background"
       />
       <ProductGrid products={apparelItems} basePath="/apparel" />
+      <ShowAllButton />
       <Footer color="var(--darkRed)" />
     </div>
   );
