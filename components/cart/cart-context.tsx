@@ -14,12 +14,12 @@ import React, {
   useOptimistic
 } from 'react';
 
-type UpdateType = 'plus' | 'minus' | 'delete';
+type UpdateType = 'update' | 'delete';
 
 type CartAction =
   | {
       type: 'UPDATE_ITEM';
-      payload: { merchandiseId: string; updateType: UpdateType };
+      payload: { merchandiseId: string; updateType: UpdateType; quantity?: number };
     }
   | {
       type: 'ADD_ITEM';
@@ -38,12 +38,12 @@ function calculateItemCost(quantity: number, price: string): string {
 
 function updateCartItem(
   item: CartItem,
-  updateType: UpdateType
+  updateType: UpdateType,
+  quantity?: number
 ): CartItem | null {
   if (updateType === 'delete') return null;
 
-  const newQuantity =
-    updateType === 'plus' ? item.quantity + 1 : item.quantity - 1;
+  const newQuantity = quantity ?? item.quantity;
   if (newQuantity === 0) return null;
 
   const singleItemAmount = Number(item.cost.totalAmount.amount) / item.quantity;
@@ -135,11 +135,11 @@ function cartReducer(state: Cart | undefined, action: CartAction): Cart {
 
   switch (action.type) {
     case 'UPDATE_ITEM': {
-      const { merchandiseId, updateType } = action.payload;
+      const { merchandiseId, updateType, quantity } = action.payload;
       const updatedLines = currentCart.lines
         .map((item) =>
           item.merchandise.id === merchandiseId
-            ? updateCartItem(item, updateType)
+            ? updateCartItem(item, updateType, quantity)
             : item
         )
         .filter(Boolean) as CartItem[];
@@ -216,10 +216,10 @@ export function useCart() {
     cartReducer
   );
 
-  const updateCartItem = (merchandiseId: string, updateType: UpdateType) => {
+  const updateCartItem = (merchandiseId: string, updateType: UpdateType, quantity?: number) => {
     updateOptimisticCart({
       type: 'UPDATE_ITEM',
-      payload: { merchandiseId, updateType }
+      payload: { merchandiseId, updateType, quantity }
     });
   };
 
