@@ -11,7 +11,7 @@ export default async function PlatesPage() {
   return (
     <div className={styles.platesPage}>
       <PageHeader
-        title="PLATES"
+        title="CAR PLATES"
         backgroundImage="/images/accessories/plates/cover.png"
         backgroundAlt="Plates Background"
       />

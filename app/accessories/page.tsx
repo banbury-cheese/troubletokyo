@@ -9,7 +9,7 @@ import styles from "./accessories.module.scss";
 const accessoryFolders = [
   {
     id: "plates",
-    name: "Plates",
+    name: "Car Plates",
     slug: "plates",
     image: "/images/carousel/plates/4.webp",
     description: "Custom license plates and decorative plates",
