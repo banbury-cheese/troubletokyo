@@ -139,7 +139,52 @@ export default async function ApparelProductPage(props: {
           </div>
         </main>
 
-        <ImageCarousel />
+        {(() => {
+          const handle = params.handle;
+          if (handle === "fc-t-shirt") {
+            return (
+              <ImageCarousel
+                images={Array.from({ length: 17 }, (_, i) => ({
+                  id: i + 1,
+                  src: `/images/carousel/apparel/fc-t-shirt/${i + 1}.webp`,
+                  alt: `FC T-shirt Image ${i + 1}`,
+                }))}
+              />
+            );
+          } else if (handle === "advan-t-shirt") {
+            return (
+              <ImageCarousel
+                images={Array.from({ length: 2 }, (_, i) => ({
+                  id: i + 1,
+                  src: `/images/carousel/apparel/advan-t-shirt/${i + 1}.webp`,
+                  alt: `Advan T-shirt Image ${i + 1}`,
+                }))}
+              />
+            );
+          } else if (handle === "chicano-t-shirt") {
+            return (
+              <ImageCarousel
+                images={Array.from({ length: 7 }, (_, i) => ({
+                  id: i + 1,
+                  src: `/images/carousel/apparel/chicano-t-shirt/${i + 1}.webp`,
+                  alt: `Chicano T-shirt Image ${i + 1}`,
+                }))}
+              />
+            );
+          } else if (handle === "collegiate-hoodie") {
+            return (
+              <ImageCarousel
+                images={Array.from({ length: 4 }, (_, i) => ({
+                  id: i + 1,
+                  src: `/images/carousel/apparel/collegiate-hoodie/${i + 1}.webp`,
+                  alt: `Collegiate Hoodie Image ${i + 1}`,
+                }))}
+              />
+            );
+          } else {
+            return <ImageCarousel />;
+          }
+        })()}
 
         <Footer color="var(--black)" />
       </div>
