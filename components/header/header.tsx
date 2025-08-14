@@ -85,6 +85,9 @@ export default function Header() {
           <Link href="/media" className={`${styles.menuItem} header-link`}>
             MEDIA
           </Link>
+          <Link href="/faq" className={`${styles.menuItem} header-link`}>
+            FAQ
+          </Link>
         </nav>
       </div>
     </header>
