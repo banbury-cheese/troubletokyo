@@ -9,9 +9,10 @@ import { BackIcon } from "../icons";
 const menuItems = [
   { href: "/apparels", label: "Apparel" },
   { href: "/accessories", label: "Products" },
+  { href: "/products", label: "All Products" },
   { href: "/about", label: "About" },
   { href: "/media", label: "Media" },
-  { href: "/faq", label: "FAQ" },
+  // { href: "/faq", label: "FAQ" },
 ];
 
 export default function MenuNav() {

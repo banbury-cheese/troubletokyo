@@ -18,26 +18,6 @@ interface FAQSection {
 
 const faqData: FAQSection[] = [
   {
-    title: "PRODUCTS",
-    items: [
-      {
-        question: "WHAT IF MY ORDER ARRIVED DAMAGED?",
-        answer:
-          "We value your satisfaction. If you happen to encounter any issues with your product, such as discrepancies or damage as best as you can email us and we'll be happy to help resolve your order.",
-      },
-      {
-        question: "HOW DO I TAKE CARE OF MY APPAREL?",
-        answer:
-          "To maintain the quality of your apparel, we recommend following the care instructions on the garment label. Generally, wash in cold water and air dry when possible.",
-      },
-      {
-        question: "HOW DO I TAKE CARE OF MY LICENSE PLATE?",
-        answer:
-          "Clean your license plate with mild soap and water. Avoid abrasive cleaners that could damage the finish or graphics.",
-      },
-    ],
-  },
-  {
     title: "RETURN POLICY",
     items: [
       {
@@ -50,21 +30,11 @@ const faqData: FAQSection[] = [
         answer:
           "NO EXCHANGES unless product is damaged from defect. Email info@trouble.tokyo to start an exchange request",
       },
-    ],
-  },
-  {
-    title: "SHIPPING",
-    items: [
       {
         question: "SHIPPING",
         answer:
           "We will only ship to the address provided upon checkout. Please verify your information prior to finalizing your purchase.\n\nTROUBLE TOKYO is not responsible for duties, taxes, or customs fees under any circumstance. Buyer is accountable for any restrictions, duties, taxes, and any other fees collected from the destination country.",
       },
-    ],
-  },
-  {
-    title: "PAYMENTS",
-    items: [
       {
         question: "PAYMENTS",
         answer:
@@ -160,7 +130,7 @@ export default function FAQPage() {
       <Header />
 
       <main className={styles.main}>
-        <h1 className={styles.title}>FREQUENTLY ASKED QUESTIONS</h1>
+        {/* <h1 className={styles.title}>Returns Policy</h1> */}
 
         <div className={styles.faqSections}>
           {faqData.map((section, sectionIndex) => (
