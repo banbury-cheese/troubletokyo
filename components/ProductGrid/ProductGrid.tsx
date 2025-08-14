@@ -31,7 +31,7 @@ export default function ProductGrid({ products, basePath }: ProductGridProps) {
                 className={styles.productImageCloseup}
               />
               <Image
-                src={product.images[1].url}
+                src={product.images[1]?.url || product.images[2].url}
                 alt={`${product.title} closeup`}
                 width={250}
                 height={250}
