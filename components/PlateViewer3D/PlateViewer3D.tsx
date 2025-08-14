@@ -117,7 +117,7 @@ export default function PlateViewer3D({
     );
     camera.position.set(0, 0, 3.5); // Moved camera back slightly
 
-    // Renderer setup - Enable physically based rendering
+    // Renderer setup - Enable physically based rendering with enhanced quality
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
@@ -131,35 +131,50 @@ export default function PlateViewer3D({
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0; // Slightly reduced for better color accuracy
+    renderer.toneMappingExposure = 1.2; // Slightly increased for better brightness
+    renderer.shadowMap.autoUpdate = true;
     rendererRef.current = renderer;
     mountRef.current.appendChild(renderer.domElement);
 
-    // Enhanced lighting setup for license plate viewing
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Increased ambient for better visibility
-    scene.add(ambientLight);
+    // Professional 3-point lighting setup for license plate viewing
+    // 1. Key Light - Main directional light with soft shadows
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    keyLight.position.set(4, 6, 3);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.width = 4096;
+    keyLight.shadow.mapSize.height = 4096;
+    keyLight.shadow.camera.near = 0.1;
+    keyLight.shadow.camera.far = 50;
+    keyLight.shadow.camera.left = -8;
+    keyLight.shadow.camera.right = 8;
+    keyLight.shadow.camera.top = 8;
+    keyLight.shadow.camera.bottom = -8;
+    keyLight.shadow.bias = -0.0001;
+    keyLight.shadow.radius = 8;
+    scene.add(keyLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Reduced intensity
-    directionalLight.position.set(5, 5, 5); // Closer position
-    directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 2048;
-    directionalLight.shadow.mapSize.height = 2048;
-    directionalLight.shadow.camera.near = 0.1;
-    directionalLight.shadow.camera.far = 50;
-    directionalLight.shadow.camera.left = -5;
-    directionalLight.shadow.camera.right = 5;
-    directionalLight.shadow.camera.top = 5;
-    directionalLight.shadow.camera.bottom = -5;
-    scene.add(directionalLight);
-
-    // Additional softer lighting for even illumination
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    fillLight.position.set(-5, 3, 2);
+    // 2. Fill Light - Softer light to fill shadows
+    const fillLight = new THREE.DirectionalLight(0xf0f8ff, 1.2); // Slightly blue tint
+    fillLight.position.set(-3, 2, 4);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xffffff, 0.4);
-    rimLight.position.set(0, -5, -5);
+    // 3. Rim Light - Backlight for edge definition
+    const rimLight = new THREE.DirectionalLight(0xfff8dc, 0.8); // Warm rim light
+    rimLight.position.set(-2, -3, -4);
     scene.add(rimLight);
+
+    // 4. Ambient Light - Global illumination
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Reduced for more dramatic lighting
+    scene.add(ambientLight);
+
+    // 5. Top Light - Additional overhead illumination
+    const topLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    topLight.position.set(0, 8, 0);
+    scene.add(topLight);
+
+    // 6. Hemisphere Light - Sky/ground color variation
+    const hemisphereLight = new THREE.HemisphereLight(0x87ceeb, 0x362d1d, 0.3); // Sky blue to brown
+    scene.add(hemisphereLight);
 
     // Environment map for reflections
     const addEnvironmentMap = async () => {
@@ -265,9 +280,10 @@ export default function PlateViewer3D({
           metalnessMap: metallicTexture,
           normalMap: normalTexture,
           roughnessMap: roughnessTexture,
-          metalness: 0.1,
-          roughness: 0.8,
-          normalScale: new THREE.Vector2(0.5, 0.5), // Subtle normal mapping
+          metalness: 0.15, // Slightly increased for better reflections
+          roughness: 0.7, // Slightly reduced for more shine
+          normalScale: new THREE.Vector2(0.8, 0.8), // More pronounced normal mapping
+          envMapIntensity: 0.5, // Environment map reflection intensity
         });
 
         const frameMaterial = new THREE.MeshStandardMaterial({
@@ -275,9 +291,10 @@ export default function PlateViewer3D({
           metalnessMap: metallicTexture,
           normalMap: normalTexture,
           roughnessMap: roughnessTexture,
-          metalness: 0.3,
-          roughness: 0.6,
-          normalScale: new THREE.Vector2(1, 1),
+          metalness: 0.4, // More metallic for frame
+          roughness: 0.5, // Smoother frame
+          normalScale: new THREE.Vector2(1.2, 1.2), // More pronounced normals for frame detail
+          envMapIntensity: 0.7, // Higher reflection for frame
         });
 
         // Load the FBX model
