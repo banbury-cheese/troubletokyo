@@ -69,8 +69,7 @@ export default async function AccessoryProductPage(props: {
 
   // Check if this is a sticker product
   const isSticker =
-    params.category === "stickers" ||
-    params.handle.includes("sticker");
+    params.category === "stickers" || params.handle.includes("sticker");
 
   // Use the new FBX model from the Plates folder
   const modelSrc = "/Plates/Model/Plate.fbx";
@@ -128,7 +127,11 @@ export default async function AccessoryProductPage(props: {
         <main className={styles.main}>
           <div className={styles.productContainer}>
             {/* Product Image */}
-            <div className={`${styles.productImageSection} ${isSticker ? styles.stickerBackground : ''}`}>
+            <div
+              className={`${styles.productImageSection} ${
+                isSticker ? styles.stickerBackground : ""
+              }`}
+            >
               <img
                 src={product.images[1]?.url || product.images[0]?.url}
                 alt={`${product.title} image`}
@@ -194,9 +197,34 @@ export default async function AccessoryProductPage(props: {
                 alt: "Car Plate Design 3",
               },
               {
-                id: 3,
+                id: 4,
                 src: "/images/carousel/plates/4.webp",
                 alt: "Car Plate Design 4",
+              },
+            ]}
+          />
+        ) : isSticker ? (
+          <ImageCarousel
+            images={[
+              {
+                id: 1,
+                src: "/images/carousel/stickers/1.webp",
+                alt: "Sticker 1",
+              },
+              {
+                id: 2,
+                src: "/images/carousel/stickers/2.webp",
+                alt: "Sticker 2",
+              },
+              {
+                id: 3,
+                src: "/images/carousel/stickers/3.webp",
+                alt: "Sticker 3",
+              },
+              {
+                id: 4,
+                src: "/images/carousel/stickers/4.webp",
+                alt: "Sticker 4",
               },
             ]}
           />

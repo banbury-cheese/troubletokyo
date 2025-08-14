@@ -11,14 +11,14 @@ const accessoryFolders = [
     id: "plates",
     name: "Plates",
     slug: "plates",
-    image: "/images/accessories/plates/cover.png",
+    image: "/images/carousel/plates/4.webp",
     description: "Custom license plates and decorative plates",
   },
   {
     id: "stickers",
     name: "Stickers",
     slug: "stickers",
-    image: "/images/accessories/cover.jpg",
+    image: "/images/carousel/stickers/2.webp",
     description: "High-quality vinyl stickers and decals",
   },
   // {

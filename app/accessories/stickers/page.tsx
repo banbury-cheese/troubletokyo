@@ -13,7 +13,7 @@ export default async function StickersPage() {
     <div className={styles.stickersPage}>
       <PageHeader
         title="STICKERS"
-        backgroundImage="/images/accessories/stickers/cover.jpg"
+        backgroundImage="/images/carousel/stickers/1.webp"
         backgroundAlt="Stickers Background"
       />
       <ProductGrid products={stickerItems} basePath="/accessories/stickers" />
