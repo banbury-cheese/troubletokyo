@@ -184,7 +184,7 @@ export default function SizeChart({ isOpen, onClose }: SizeChartProps) {
               </tr>
             </thead>
             <tbody>
-              {sizeData.map((row, index) => (
+              {sizeData.map((row) => (
                 <tr key={row.size} ref={addRowRef} className={styles.dataRow}>
                   <td className={styles.sizeCell}>{row.size}</td>
                   <td className={styles.dataCell}>{row.bodyLength}</td>
