@@ -38,67 +38,37 @@ const faqData: FAQSection[] = [
     ],
   },
   {
+    title: "RETURN POLICY",
+    items: [
+      {
+        question: "RETURNS",
+        answer:
+          "All sales are final. Please carefully review your order and verify your information prior to finalizing your purchase. There will be no returns or exchanges unless the item is damaged from defect. All shipping damages should be communicated and resolved with shipping company.",
+      },
+      {
+        question: "EXCHANGES",
+        answer:
+          "NO EXCHANGES unless product is damaged from defect. Email info@trouble.tokyo to start an exchange request",
+      },
+    ],
+  },
+  {
     title: "SHIPPING",
     items: [
       {
-        question: "HOW LONG WILL IT TAKE TO SHIP MY ORDER?",
+        question: "SHIPPING",
         answer:
-          "We kindly ask that you allow up to 10 business days to process before shipment.",
-      },
-      {
-        question: "HOW CAN I TRACK MY ORDER?",
-        answer:
-          "Once your order has been placed, we will send you a confirmation email. After the order is shipped, you will receive an email notification and tracking number.",
-      },
-      {
-        question: "HOW DO I FIND MY CONFIRMATION EMAIL?",
-        answer:
-          "The order confirmation email including your order details will be sent to the email used on our website when purchasing the order. Before contacting us, be sure to check your junk mail folder as well.",
-      },
-      {
-        question: "DO YOU SHIP INTERNATIONALLY?",
-        answer:
-          "Yes! We offer international shipping services; however, please note that shipping rates vary depending on the destination country.",
-      },
-      {
-        question: "DO I HAVE TO PAY DUTIES AND TAXES?",
-        answer:
-          "The delivery charges do not include import costs that may be due when the package reaches your destination country. We are not responsible for the costs due after it has left our fulfillment center.",
-      },
-      {
-        question: "WHAT IF I HAVEN'T RECEIVED MY PACKAGE?",
-        answer:
-          "We are very sorry if you haven't received your package within the expected delivery timeframe. We will investigate the matter and provide assistance in getting you your order or please feel free to reach out to our dedicated customer support team using our contact page.",
-      },
-      {
-        question: "WHERE IS MY PACKAGE?",
-        answer:
-          "Please allow up to 72 hours after delivery on tracking before contacting us, as the tracking can sometimes be updated incorrectly.",
+          "We will only ship to the address provided upon checkout. Please verify your information prior to finalizing your purchase.\n\nTROUBLE TOKYO is not responsible for duties, taxes, or customs fees under any circumstance. Buyer is accountable for any restrictions, duties, taxes, and any other fees collected from the destination country.",
       },
     ],
   },
   {
-    title: "PAYMENT",
+    title: "PAYMENTS",
     items: [
       {
-        question: "WHICH PAYMENT METHODS DO YOU ACCEPT?",
+        question: "PAYMENTS",
         answer:
-          "We accept payments through Amex, Mastercard, Visa, Shop Pay, and Apple Pay.",
-      },
-      {
-        question: "WHICH CURRENCIES CAN I PAY IN?",
-        answer:
-          "Our website features a currency converter that allows you to view prices in your preferred currency from the drop-down in the bottom left of the website and make payments accordingly.",
-      },
-    ],
-  },
-  {
-    title: "RETURNS",
-    items: [
-      {
-        question: "WHAT IF I HAVE AN ISSUE WITH MY PRODUCT?",
-        answer:
-          "We value your satisfaction. At Trouble Tokyo, we strive to ensure the highest quality for every customer and member of Trouble and are satisfied. We aim to deliver a high-quality experience and product. If you happen to encounter any issues with your product, kindly reach out to us via email and we will investigate the matter to ensure your complete satisfaction with your purchase.",
+          "We accept Visa, MasterCard, and American Express credit cards.\n\nYou agree to pay the price for the merchandise in your order at the time you submitted your order and the delivery fees for the shipping service you select.\n\nWe reserve the right to accept, decline or cancel your order for any reason.",
       },
     ],
   },
