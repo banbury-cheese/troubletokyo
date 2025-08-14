@@ -5,21 +5,24 @@
   padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 
   // Large desktop screens (1366px+)
   @include media(">=desktop") {
     grid-template-columns: 1fr 1fr 1fr;
-    max-width: 1400px;
+    max-width: 90vw;
     gap: 15vh 40px;
     padding: 60px 40px;
+    justify-content: center;
   }
 
   // Extra wide desktop screens (1920px+)
   @include media(">=LGdesktop") {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    max-width: 1800px;
+    max-width: 85vw;
     gap: 12vh 50px;
     padding: 80px 60px;
+    justify-content: center;
   }
 
   @include media("<tablet") {
@@ -57,6 +60,48 @@
     &:nth-last-child(-n + 2)::after {
       display: none;
     }
+
+    // Large desktop (3 columns)
+    @include media(">=desktop") {
+      &:nth-child(2n + 1)::after {
+        display: none; // Remove 2-column lines
+      }
+
+      &:nth-child(3n + 1)::after {
+        content: "";
+        position: absolute;
+        bottom: -7vh;
+        left: -50vw;
+        width: 200vw;
+        height: 2px;
+        background: var(--darkRed);
+      }
+
+      &:nth-last-child(-n + 3)::after {
+        display: none;
+      }
+    }
+
+    // Extra wide desktop (4 columns)
+    @include media(">=LGdesktop") {
+      &:nth-child(3n + 1)::after {
+        display: none; // Remove 3-column lines
+      }
+
+      &:nth-child(4n + 1)::after {
+        content: "";
+        position: absolute;
+        bottom: -6vh;
+        left: -50vw;
+        width: 200vw;
+        height: 2px;
+        background: var(--darkRed);
+      }
+
+      &:nth-last-child(-n + 4)::after {
+        display: none;
+      }
+    }
   }
 
   @include media("<tablet") {
@@ -84,6 +129,18 @@
     align-items: center;
     justify-content: center;
 
+    // Large desktop adjustments
+    @include media(">=desktop") {
+      width: 25vw;
+      height: 35vh;
+    }
+
+    // Extra wide desktop adjustments
+    @include media(">=LGdesktop") {
+      width: 20vw;
+      height: 30vh;
+    }
+
     @include media("<tablet") {
       width: 55vw;
       height: 35vh;
@@ -106,6 +163,20 @@
     left: 3vh;
     z-index: 2;
     object-fit: contain;
+
+    // Large desktop adjustments
+    @include media(">=desktop") {
+      bottom: -12vh;
+      height: 45vh;
+      left: 2vh;
+    }
+
+    // Extra wide desktop adjustments
+    @include media(">=LGdesktop") {
+      bottom: -10vh;
+      height: 40vh;
+      left: 1.5vh;
+    }
 
     @include media("<tablet") {
       left: -6vh;
