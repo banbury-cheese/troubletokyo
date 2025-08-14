@@ -5,6 +5,7 @@ import { CurrencyProvider } from "@/components/cart/currency-context";
 import { getCart } from "@/lib/shopify";
 import { Toaster } from "sonner";
 import CartModal from "@/components/cart/modal/modal";
+import LaunchTimer from "@/components/LaunchTimer/LaunchTimer";
 
 export const metadata: Metadata = {
   title: "Trouble Tokyo",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={``}>
         <CurrencyProvider>
           <CartProvider cartPromise={cart}>
+            <LaunchTimer />
             {children}
             <Toaster />
             <CartModal />

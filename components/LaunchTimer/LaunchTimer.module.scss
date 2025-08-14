@@ -1,0 +1,202 @@
+@import "../../styles/breakpoints.scss";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--charcoalBlack);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+  text-align: center;
+
+  @include media("<=phone") {
+    gap: 2rem;
+    padding: 1rem;
+  }
+}
+
+.logo {
+  width: 100%;
+  max-width: 400px;
+  opacity: 0;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  @include media("<=phone") {
+    max-width: 280px;
+  }
+}
+
+.comingSoon {
+  font-family: var(--fontSecondary);
+  font-size: 0.8rem;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0rem;
+
+  @include media("<=phone") {
+    font-size: 1rem;
+  }
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+
+  @include media("<=tablet") {
+    gap: 1.5rem;
+  }
+
+  @include media("<=phone") {
+    gap: 1rem;
+  }
+}
+
+.timeGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+
+  @include media("<=phone") {
+    min-width: 60px;
+  }
+}
+
+.timeValue {
+  font-family: var(--fontPrimary);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+
+  @include media("<=tablet") {
+    font-size: 2.5rem;
+  }
+
+  @include media("<=phone") {
+    font-size: 2rem;
+  }
+}
+
+.timeLabel {
+  font-family: var(--bodyFont);
+  font-size: 0.75rem;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  opacity: 0.7;
+
+  @include media("<=phone") {
+    font-size: 0.7rem;
+  }
+}
+
+.separator {
+  font-family: var(--fontPrimary);
+  font-size: 2rem;
+  color: var(--brightRed);
+  font-weight: 600;
+  opacity: 0.6;
+  margin: 0 0.5rem;
+
+  @include media("<=tablet") {
+    font-size: 1.5rem;
+    margin: 0 0.25rem;
+  }
+
+  @include media("<=phone") {
+    display: none;
+  }
+}
+
+.launchDate {
+  font-family: var(--bodyFont);
+  font-size: 0.9rem;
+  color: var(--white);
+  opacity: 0.6;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+
+  @include media("<=phone") {
+    font-size: 0.8rem;
+  }
+}
+
+.launched {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--charcoalBlack);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+  gap: 2rem;
+}
+
+.launchedLogo {
+  width: 100%;
+  max-width: 500px;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  @include media("<=phone") {
+    max-width: 320px;
+  }
+}
+
+.launchedText {
+  font-family: var(--bodyFont);
+  font-size: 1.5rem;
+  color: var(--brightRed);
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: pulse 2s ease-in-out infinite;
+
+  @include media("<=phone") {
+    font-size: 1.2rem;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
