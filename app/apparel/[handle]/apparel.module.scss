@@ -47,6 +47,7 @@
   height: auto;
   margin-top: -18vh;
   object-fit: contain;
+  pointer-events: none;
 
   @include media("<tablet") {
     width: 50vh;
@@ -200,7 +201,7 @@
   font-size: 0.9rem;
   transition: color 0.3s ease;
   width: fit-content;
-  
+
   @include media("<tablet") {
     font-size: 0.85rem;
   }

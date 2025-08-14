@@ -54,6 +54,7 @@
   height: auto;
   //   margin-top: -18vh;
   object-fit: contain;
+  pointer-events: none;
 
   @include media("<tablet") {
     width: 85vw;

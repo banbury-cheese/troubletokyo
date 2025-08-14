@@ -336,22 +336,6 @@ export default function Home() {
           />
         </Link>
 
-        {/* Media Section */}
-        <Link href="/media" className={`${styles.section} section-link`}>
-          <div className={styles.sectionContent}>
-            <div className={`${styles.sectionTitle} section-title h-effect`}>
-              <h2 className="h-item">MEDIA</h2>
-              <h2 className="h-item">MEDIA</h2>
-            </div>
-          </div>
-          <Image
-            src="/images/landingPage/media.jpg"
-            alt="Media section"
-            fill
-            className={styles.sectionBg}
-          />
-        </Link>
-
         {/* Accessories Section */}
         <Link href="/accessories" className={`${styles.section} section-link`}>
           <div className={styles.sectionContent}>
@@ -363,6 +347,22 @@ export default function Home() {
           <Image
             src="/images/landingPage/accessories.jpg"
             alt="Accessories section"
+            fill
+            className={styles.sectionBg}
+          />
+        </Link>
+
+        {/* Media Section */}
+        <Link href="/media" className={`${styles.section} section-link`}>
+          <div className={styles.sectionContent}>
+            <div className={`${styles.sectionTitle} section-title h-effect`}>
+              <h2 className="h-item">MEDIA</h2>
+              <h2 className="h-item">MEDIA</h2>
+            </div>
+          </div>
+          <Image
+            src="/images/landingPage/media.jpg"
+            alt="Media section"
             fill
             className={styles.sectionBg}
           />

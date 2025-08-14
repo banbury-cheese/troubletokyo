@@ -64,17 +64,14 @@ export default function Header() {
         <Link href={"/"} className={styles.backButton}>
           <BackIcon />
         </Link>
-        <div className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <Link href="/">
             <Logo />
           </Link>
-        </div>
+        </Link>
         <nav className={styles.menu}>
           <Link href="/apparels" className={`${styles.menuItem} header-link`}>
             APPAREL
-          </Link>
-          <Link href="/media" className={`${styles.menuItem} header-link`}>
-            MEDIA
           </Link>
           <Link
             href="/accessories"
@@ -85,8 +82,8 @@ export default function Header() {
           <Link href="/about" className={`${styles.menuItem} header-link`}>
             ABOUT
           </Link>
-          <Link href="/cart" className={`${styles.menuItem} header-link`}>
-            CART
+          <Link href="/media" className={`${styles.menuItem} header-link`}>
+            MEDIA
           </Link>
         </nav>
       </div>
