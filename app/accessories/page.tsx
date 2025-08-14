@@ -21,20 +21,20 @@ const accessoryFolders = [
     image: "/images/accessories/cover.jpg",
     description: "High-quality vinyl stickers and decals",
   },
-  {
-    id: "keychains",
-    name: "Keychains",
-    slug: "keychains",
-    image: "/images/accessories/keychains/cover.jpg",
-    description: "Premium keychains and accessories",
-  },
-  {
-    id: "patches",
-    name: "Patches",
-    slug: "patches",
-    image: "/images/accessories/patches/cover.jpg",
-    description: "Embroidered patches and badges",
-  },
+  // {
+  //   id: "keychains",
+  //   name: "Keychains",
+  //   slug: "keychains",
+  //   image: "/images/accessories/keychains/cover.jpg",
+  //   description: "Premium keychains and accessories",
+  // },
+  // {
+  //   id: "patches",
+  //   name: "Patches",
+  //   slug: "patches",
+  //   image: "/images/accessories/patches/cover.jpg",
+  //   description: "Embroidered patches and badges",
+  // },
 ];
 
 export default function AccessoriesPage() {

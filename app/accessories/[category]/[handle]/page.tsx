@@ -67,6 +67,11 @@ export default async function AccessoryProductPage(props: {
     params.handle.includes("plate") ||
     params.handle.includes("car-plate");
 
+  // Check if this is a sticker product
+  const isSticker =
+    params.category === "stickers" ||
+    params.handle.includes("sticker");
+
   // Use the new FBX model from the Plates folder
   const modelSrc = "/Plates/Model/Plate.fbx";
 
@@ -123,7 +128,7 @@ export default async function AccessoryProductPage(props: {
         <main className={styles.main}>
           <div className={styles.productContainer}>
             {/* Product Image */}
-            <div className={styles.productImageSection}>
+            <div className={`${styles.productImageSection} ${isSticker ? styles.stickerBackground : ''}`}>
               <img
                 src={product.images[1]?.url || product.images[0]?.url}
                 alt={`${product.title} image`}
