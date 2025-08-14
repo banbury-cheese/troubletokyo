@@ -160,7 +160,7 @@ export default function AboutPage() {
             {/* Main Text Content */}
             <div className={styles.textContent}>
               <p ref={mainDescRef} className={styles.mainDescription}>
-                At the heart of every innovation is a Troublemaker-- someone who
+                At the heart of every innovation is a Troublemaker, someone who
                 dared to dream, challenged the status quo, and relentlessly
                 forged a path that ultimately reshaped the world as we know it.
                 Pursuing your dreams demands persistence to pave new roads,
@@ -169,26 +169,24 @@ export default function AboutPage() {
 
               <div className={styles.additionalContent}>
                 <p ref={descRef} className={styles.description}>
-                  TroubleTokyo is a multimedia platform that captures the scene
-                  from our unique perspective while creating premium products.
-                  We live at the intersection of varied viewpoints, fostering a
-                  culture and connecting with our community at eye level.
+                  TroubleTokyo is a multimedia platform that captures the
+                  Japanese automotive scene from our unique perspective while
+                  creating premium experiences and products.
                 </p>
 
                 <p ref={italicRef} className={styles.italicText}>
-                  Join Trouble as we pay homage to the icons and eras that
-                  shaped the past, all while racing towards the future on full
-                  throttle.
+                  We pay homage to the icons and eras that shaped the past, all
+                  while racing towards the future on full throttle.
                 </p>
               </div>
 
               {/* FAQ Section */}
-              <div ref={faqRef} className={styles.faqSection}>
+              {/* <div ref={faqRef} className={styles.faqSection}>
                 <p className={styles.faqPrompt}>GOT A QUESTION? CLICK HERE:</p>
                 <Link href="/faq" className={styles.faqLink}>
                   FREQUENTLY ASKED QUESTIONS
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
 
