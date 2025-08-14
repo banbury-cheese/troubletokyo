@@ -6,6 +6,22 @@
   max-width: 1200px;
   margin: 0 auto;
 
+  // Large desktop screens (1366px+)
+  @include media(">=desktop") {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1400px;
+    gap: 15vh 40px;
+    padding: 60px 40px;
+  }
+
+  // Extra wide desktop screens (1920px+)
+  @include media(">=LGdesktop") {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 1800px;
+    gap: 12vh 50px;
+    padding: 80px 60px;
+  }
+
   @include media("<tablet") {
     grid-template-columns: 1fr;
     gap: 0vh 0px;
