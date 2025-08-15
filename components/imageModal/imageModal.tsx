@@ -111,7 +111,7 @@ export default function ImageModal({
           {
             left: "50%",
             top: "25%",
-            width: "90vw",
+            width: "100vw",
             height: "50vh",
             x: "-50%",
             y: "-50%",
@@ -284,6 +284,7 @@ export default function ImageModal({
             placeholder={`data:image/svg+xml;base64,${toBase64(
               shimmer(700, 475)
             )}`}
+            quality={60}
             priority
           />
 

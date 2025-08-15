@@ -22,115 +22,136 @@ interface MediaItem {
 const mediaItems: MediaItem[] = [
   {
     id: 1,
-    thumbnail: "/images/media/Photos/GinzaTrouble/1.jpg",
-    date: "2024/07/01",
+    thumbnail: "/images/media/Photos/2024.08.14./2024.08.14. McLaren Grass1.webp",
+    date: "2024/08/14",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 10 },
-      (_, i) => `/images/media/Photos/GinzaTrouble/${i + 1}.jpg`
-    ),
-    title: "GINZA TROUBLE",
-    location: "GINZA, TOKYO",
+    fullMedia: [
+      "/images/media/Photos/2024.08.14./2024.08.14. McLaren Grass1.webp",
+      "/images/media/Photos/2024.08.14./2024.08.14. McLaren Grass2.webp",
+      "/images/media/Photos/2024.08.14./2024.08.14. McLaren Grass3.webp",
+    ],
+    title: "MCLAREN ON GRASS",
+    location: "TORONTO, CANADA",
     description:
-      "A sleek automotive photoshoot capturing the essence of Japanese street culture in the heart of Tokyo's most prestigious district.",
-    photographer: "TROUBLE TOKYO COLLECTIVE",
+      "Andy's (@tamed) McLaren 720s DarwinPRO sitting on the field of a local Scarborough school.",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 2,
-    thumbnail: "/images/media/Photos/MclearnGrass/1.jpg",
-    date: "2024/07/02",
+    thumbnail: "/images/media/Photos/2024.09.06/RWB Grass1.webp",
+    date: "2024/09/06",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 26 },
-      (_, i) => `/images/media/Photos/MclearnGrass/${i + 1}.jpg`
-    ),
-    title: "MCLEARN GRASS",
+    fullMedia: [
+      "/images/media/Photos/2024.09.06/RWB Grass1.webp",
+      "/images/media/Photos/2024.09.06/RWB Grass2.webp",
+      "/images/media/Photos/2024.09.06/RWB Grass3.webp",
+    ],
+    title: "RWB ON GRASS",
     location: "TORONTO, CANADA",
     description:
-      "An outdoor automotive session showcasing performance vehicles against natural landscapes, blending power with organic beauty.",
-    photographer: "FULL NAME [@USERNAME]",
+      "Local RWB Toronto Family posted up on a grassy field in Scarborough.",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 3,
-    thumbnail: "/images/media/Photos/RWBGAS7/1.jpg",
-    date: "2024/07/03",
+    thumbnail: "/images/media/Photos/2024.10.15./Ginza Trouble1.webp",
+    date: "2024/10/15",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 7 },
-      (_, i) => `/images/media/Photos/RWBGAS7/${i + 1}.jpg`
-    ),
-    title: "RWB GAS7",
-    location: "TOKYO, JAPAN",
+    fullMedia: [
+      "/images/media/Photos/2024.10.15./Ginza Trouble1.webp",
+    ],
+    title: "TROUBLE IN GINZA",
+    location: "GINZA, JAPAN",
     description:
-      "Featuring the iconic RWB Porsche builds, this series captures the raw essence of Japanese tuning culture and craftsmanship.",
-    photographer: "TROUBLE TOKYO COLLECTIVE",
+      "Trouble 1987 930 911 posted up in Ginza.",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 4,
-    thumbnail: "/images/media/Photos/GinzaTrouble/2.jpg",
-    date: "2024/07/04",
+    thumbnail: "/images/media/Photos/2024.11.06./Skaterboard1.webp",
+    date: "2024/11/06",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 10 },
-      (_, i) => `/images/media/Photos/GinzaTrouble/${i + 1}.jpg`
-    ),
-    title: "GINZA TROUBLE 2",
-    location: "GINZA, TOKYO",
+    fullMedia: [
+      "/images/media/Photos/2024.11.06./Skaterboard1.webp",
+      "/images/media/Photos/2024.11.06./Skaterboard2.webp",
+      "/images/media/Photos/2024.11.06./Skaterboard3.webp",
+    ],
+    title: "SKATEBOARD",
+    location: "SHIBUYA, JAPAN",
     description:
-      "A continuation of the Ginza series, exploring different angles and lighting techniques in Tokyo's urban automotive scene.",
-    photographer: "TROUBLE TOKYO COLLECTIVE",
+      "The night before they banned street drinking in Shibuya a group of local skaters got together to drink and skate for one last time.",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 5,
-    thumbnail: "/images/media/Photos/MclearnGrass/5.jpg",
-    date: "2024/07/05",
+    thumbnail: "/images/media/Photos/2024.11.07/TroubleGlilzz1_Cor.webp",
+    date: "2024/11/07",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 26 },
-      (_, i) => `/images/media/Photos/MclearnGrass/${i + 1}.jpg`
-    ),
-    title: "MCLEARN GRASS 2",
-    location: "TORONTO, CANADA",
+    fullMedia: [
+      "/images/media/Photos/2024.11.07/TroubleGlilzz1_Cor.webp",
+      "/images/media/Photos/2024.11.07/TroubleGlizz2_Cor.webp",
+      "/images/media/Photos/2024.11.07/TroubleGlizz3_Cor.webp",
+      "/images/media/Photos/2024.11.07/TroubleGlizz4_Cor.webp",
+      "/images/media/Photos/2024.11.07/TroubleGlizz5_Cor.webp",
+    ],
+    title: "GRILLZJEWELZ TETSUYA AKIYAMA",
+    location: "TAITŌ, JAPAN",
     description:
-      "Second installment of the McLaren grass series, focusing on detail shots and environmental integration.",
-    photographer: "FULL NAME [@USERNAME]",
+      "Tetsuya of GrillzJewelz wearing our Chicano tee at his store in Tokyo.",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 6,
-    thumbnail: "/images/media/Photos/RWBGAS7/3.jpg",
-    date: "2024/07/06",
+    thumbnail: "/images/media/Photos/2024.11.15./Killy1.webp",
+    date: "2024/11/15",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 7 },
-      (_, i) => `/images/media/Photos/RWBGAS7/${i + 1}.jpg`
-    ),
-    title: "RWB GAS7 2",
-    location: "TOKYO, JAPAN",
+    fullMedia: [
+      "/images/media/Photos/2024.11.15./Killy1.webp",
+      "/images/media/Photos/2024.11.15./Killy2.webp",
+    ],
+    title: "KILLY",
+    location: "TAITŌ, JAPAN",
     description:
-      "Extended coverage of the RWB build, showcasing the intricate details and aerodynamic modifications.",
-    photographer: "TROUBLE TOKYO COLLECTIVE",
+      "Canadian Rapper Killy (@Killy) wearing our Chicano tee in front of GrillzJewelz storefront in Taito.",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 7,
-    thumbnail: "/images/media/Photos/GinzaTrouble/7.jpg",
-    date: "2024/07/07",
+    thumbnail: "/images/media/Photos/2024.11.26./Street Drifting1.webp",
+    date: "2024/11/26",
     type: "photo_folder",
-    fullMedia: Array.from(
-      { length: 10 },
-      (_, i) => `/images/media/Photos/GinzaTrouble/${i + 1}.jpg`
-    ),
-    title: "GINZA TROUBLE 3",
-    location: "GINZA, TOKYO",
+    fullMedia: [
+      "/images/media/Photos/2024.11.26./Street Drifting1.webp",
+      "/images/media/Photos/2024.11.26./Street Drifting2.webp",
+      "/images/media/Photos/2024.11.26./Street Drifting3.webp",
+    ],
+    title: "STREET DRIFTING",
+    location: "OTA, JAPAN",
     description:
-      "Final chapter of the Ginza trilogy, capturing the nighttime aesthetic and neon-lit atmosphere of Tokyo streets.",
-    photographer: "TROUBLE TOKYO COLLECTIVE",
+      "",
+    photographer: "TROUBLE TOKYO TEAM",
   },
   {
     id: 8,
+    thumbnail: "/images/media/Photos/2024.12.19./ShibuyaCrossing1-.webp",
+    date: "2024/12/19",
+    type: "photo_folder",
+    fullMedia: [
+      "/images/media/Photos/2024.12.19./ShibuyaCrossing1-.webp",
+      "/images/media/Photos/2024.12.19./ShibuyaCrossing2-.webp",
+    ],
+    title: "SHIBUYA CROSSING",
+    location: "SHIBUYA, TOKYO",
+    description:
+      "Shooting Etushi Shoji's (@etu_1128) Lamborghini Diablo at Shibuya Crossing with our Trouble 930 911 in tow.",
+    photographer: "TROUBLE TOKYO TEAM",
+  },
+  {
+    id: 9,
     thumbnail: "/images/landingPage/media.jpg",
     date: "2024/07/08",
     type: "video",
-    fullMedia: "/images/media/videos/TroubleDriftmp4.mp4",
+    fullMedia: "/images/media/Videos/TroubleDriftmp4.mp4",
     title: "TROUBLE DRIFT",
     location: "TOKYO DRIFT CIRCUIT",
     description:
@@ -138,11 +159,11 @@ const mediaItems: MediaItem[] = [
     photographer: "TROUBLE TOKYO COLLECTIVE",
   },
   {
-    id: 9,
+    id: 10,
     thumbnail: "/images/landingPage/apparel.jpg",
     date: "2024/07/09",
     type: "video",
-    fullMedia: "/images/media/videos/ImportREEL.mp4",
+    fullMedia: "/images/media/Videos/ImportREEL.mp4",
     title: "IMPORT REEL",
     location: "VARIOUS LOCATIONS",
     description:
@@ -150,23 +171,23 @@ const mediaItems: MediaItem[] = [
     photographer: "TROUBLE TOKYO COLLECTIVE",
   },
   {
-    id: 10,
+    id: 11,
     thumbnail: "/images/landingPage/media.jpg",
     date: "2024/07/10",
     type: "video",
-    fullMedia: "/images/media/videos/RWBGrass2.mp4",
-    title: "RWR GRASS 2",
+    fullMedia: "/images/media/Videos/RWBGrass2.mp4",
+    title: "RWB GRASS 2",
     location: "OUTDOOR LOCATION",
     description:
       "Behind-the-scenes and highlight reel from the RWB grass photoshoot, showing the creative process.",
     photographer: "TROUBLE TOKYO COLLECTIVE",
   },
   {
-    id: 11,
+    id: 12,
     thumbnail: "/images/landingPage/media.jpg",
     date: "2024/07/11",
     type: "video",
-    fullMedia: "/images/media/videos/TamedVHS.mp4",
+    fullMedia: "/images/media/Videos/TamedVHS.mp4",
     title: "TAMED VHS",
     location: "VINTAGE GARAGE",
     description:
@@ -174,11 +195,11 @@ const mediaItems: MediaItem[] = [
     photographer: "TROUBLE TOKYO COLLECTIVE",
   },
   {
-    id: 12,
+    id: 13,
     thumbnail: "/images/landingPage/media.jpg",
     date: "2024/07/12",
     type: "video",
-    fullMedia: "/images/media/videos/Troubleskaters.mp4",
+    fullMedia: "/images/media/Videos/Troubleskaters.mp4",
     title: "TROUBLE SKATERS",
     location: "TOKYO SKATE PARKS",
     description:
@@ -325,7 +346,8 @@ export default function MediaPage() {
                         placeholder={`data:image/svg+xml;base64,${toBase64(
                           shimmer(700, 475)
                         )}`}
-                        quality={50}
+                        quality={30}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       {item.type === "video" && (
                         <div className={styles.playIcon}>
@@ -418,6 +440,8 @@ export default function MediaPage() {
                                 placeholder={`data:image/svg+xml;base64,${toBase64(
                                   shimmer(700, 475)
                                 )}`}
+                                quality={60}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
                               />
                             </a>
                           )}

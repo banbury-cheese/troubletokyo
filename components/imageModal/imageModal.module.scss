@@ -21,6 +21,10 @@
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 1000;
   pointer-events: all;
+
+  @include media("<tablet") {
+    background-color: black;
+  }
 }
 
 .modalContent {
@@ -36,22 +40,34 @@
 
 .imageContainer {
   position: relative;
-  pointer-events: all;
+  pointer-events: none;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @include media("<tablet") {
+    background-color: black;
+  }
+  // background-color: rgba(0, 0, 0, 0);
+  // box-shadow: 0 25px 50px rgb(0, 0, 0);
 }
 
 .modalImage {
-  object-fit: cover;
-  width: 100%;
+  object-fit: contain;
+  width: fit-content !important;
   height: 100%;
+  pointer-events: all;
+  margin: auto;
 }
 
 .navButton {
   cursor: pointer;
+  pointer-events: all;
   z-index: 10;
-  background: #00000090;
+  background: #3d3c3c77;
   backdrop-filter: blur(3px);
   border: none;
   border-radius: 50%;
@@ -69,14 +85,19 @@
   transform: translateY(-50%);
 
   @include media("<tablet") {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    padding-top: 2px;
+
+    font-size: 15px;
+    // background: none;
   }
 
   &:hover {
-    background: #000000;
-    transform: translateY(-50%) scale(1.02);
+    @include media(">tablet") {
+      background: var(--red);
+      transform: translateY(-50%) scale(1);
+    }
   }
 }
 
@@ -84,7 +105,7 @@
   left: 20px;
 
   @include media("<tablet") {
-    left: 10px;
+    left: 7px;
   }
 }
 
@@ -92,7 +113,7 @@
   right: 20px;
 
   @include media("<tablet") {
-    right: 10px;
+    right: 7px;
   }
 }
 
