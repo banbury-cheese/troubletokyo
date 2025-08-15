@@ -80,7 +80,7 @@ export default function Footer({ color = "var(--white)" }: FooterProps) {
           <Link href="/media" className={`${styles.footerLink} footer-link`}>
             MEDIA
           </Link>
-          <Link href="/faq" className={`${styles.footerLink} footer-link`}>
+          <Link href="/returns" className={`${styles.footerLink} footer-link`}>
             RETURN
           </Link>
         </div>

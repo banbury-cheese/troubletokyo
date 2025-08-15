@@ -1,22 +1,22 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import styles from "./faq.module.scss";
+import styles from "./returns.module.scss";
 import MenuNav from "@/components/MenuNav/MenuNav";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 
-interface FAQItem {
+interface ReturnsItem {
   question: string;
   answer: string;
 }
 
-interface FAQSection {
+interface ReturnsSection {
   title: string;
-  items: FAQItem[];
+  items: ReturnsItem[];
 }
 
-const faqData: FAQSection[] = [
+const returnsData: ReturnsSection[] = [
   {
     title: "RETURN POLICY",
     items: [
@@ -28,7 +28,7 @@ const faqData: FAQSection[] = [
       {
         question: "EXCHANGES",
         answer:
-          "NO EXCHANGES unless product is damaged from defect. Email info@trouble.tokyo to start an exchange request",
+          "NO EXCHANGES unless product is damaged from defect. Email info@trouble.tokyo to start an exchange request.",
       },
       {
         question: "SHIPPING",
@@ -44,7 +44,7 @@ const faqData: FAQSection[] = [
   },
 ];
 
-export default function FAQPage() {
+export default function ReturnsPage() {
   const itemsRef = useRef<(HTMLDivElement | null)[][]>([]);
   const openItem = useRef<{ section: number; item: number } | null>(null);
 
@@ -126,14 +126,14 @@ export default function FAQPage() {
   };
 
   return (
-    <div className={styles.faqPage}>
+    <div className={styles.returnsPage}>
       <Header />
 
       <main className={styles.main}>
         {/* <h1 className={styles.title}>Returns Policy</h1> */}
 
-        <div className={styles.faqSections}>
-          {faqData.map((section, sectionIndex) => (
+        <div className={styles.returnsSections}>
+          {returnsData.map((section, sectionIndex) => (
             <div key={section.title} className={styles.section}>
               <div className={styles.sectionHeader}>
                 <h2 className={styles.sectionTitle}>{section.title}</h2>
@@ -148,7 +148,7 @@ export default function FAQPage() {
                   return (
                     <div
                       key={item.question}
-                      className={styles.faqItem}
+                      className={styles.returnsItem}
                       ref={(el) => {
                         itemsRef.current[sectionIndex][itemIndex] = el;
                       }}

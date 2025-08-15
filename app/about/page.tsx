@@ -183,7 +183,7 @@ export default function AboutPage() {
               {/* FAQ Section */}
               {/* <div ref={faqRef} className={styles.faqSection}>
                 <p className={styles.faqPrompt}>GOT A QUESTION? CLICK HERE:</p>
-                <Link href="/faq" className={styles.faqLink}>
+                <Link href="/returns" className={styles.faqLink}>
                   Returns Policy
                 </Link>
               </div> */}

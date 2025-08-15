@@ -92,3 +92,9 @@
     display: inline-block;
   }
 }
+
+.hideOnMobile {
+  @include media("<tablet") {
+    display: none;
+  }
+}

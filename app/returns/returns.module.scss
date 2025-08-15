@@ -1,4 +1,4 @@
-.faqPage {
+.returnsPage {
   min-height: 100vh;
   background-color: var(--white);
   color: var(--black);
@@ -40,7 +40,7 @@
   }
 }
 
-.faqSections {
+.returnsSections {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -112,7 +112,7 @@
   }
 }
 
-.faqItem {
+.returnsItem {
   display: flex;
   flex-direction: column;
   //   border-top: 1px solid #e0e0e0;

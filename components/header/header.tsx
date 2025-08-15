@@ -73,6 +73,9 @@ export default function Header() {
           <Link href="/apparels" className={`${styles.menuItem} header-link`}>
             APPAREL
           </Link>
+          <Link href="/products" className={`${styles.menuItem} header-link`}>
+            Products
+          </Link>
           <Link
             href="/accessories"
             className={`${styles.menuItem} header-link`}
@@ -80,14 +83,14 @@ export default function Header() {
             Accessories
           </Link>
 
-          <Link href="/about" className={`${styles.menuItem} header-link`}>
+          <Link href="/about" className={`${styles.menuItem} ${styles.hideOnMobile} header-link`}>
             ABOUT
           </Link>
           <Link href="/media" className={`${styles.menuItem} header-link`}>
             MEDIA
           </Link>
-          {/* <Link href="/faq" className={`${styles.menuItem} header-link`}>
-            FAQ
+          {/* <Link href="/returns" className={`${styles.menuItem} header-link`}>
+            RETURNS
           </Link> */}
         </nav>
       </div>

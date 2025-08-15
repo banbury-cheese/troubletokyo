@@ -12,7 +12,7 @@ const menuItems = [
   { href: "/accessories", label: "Accessories" },
   { href: "/about", label: "About" },
   { href: "/media", label: "Media" },
-  // { href: "/faq", label: "FAQ" },
+  // { href: "/returns", label: "RETURNS" },
 ];
 
 export default function MenuNav() {
