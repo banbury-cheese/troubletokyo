@@ -10,7 +10,7 @@ export default async function AllProductsPage() {
   return (
     <div className={styles.productsPage}>
       <PageHeader
-        title="ALL PRODUCTS"
+        title="PRODUCTS"
         backgroundImage="/images/all/cover.png"
         backgroundAlt="All Products Background"
       />
