@@ -7,9 +7,9 @@ import styles from "./menuNav.module.scss";
 import { BackIcon } from "../icons";
 
 const menuItems = [
+  { href: "/products", label: "All Products" },
   { href: "/apparels", label: "Apparel" },
   { href: "/accessories", label: "Accessories" },
-  { href: "/products", label: "All Products" },
   { href: "/about", label: "About" },
   { href: "/media", label: "Media" },
   // { href: "/faq", label: "FAQ" },
