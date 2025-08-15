@@ -7,6 +7,14 @@
   flex-direction: column;
   width: 100vw;
   overflow: hidden;
+  // opacity: 0;
+  // transform: translateY(30px);
+  // transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  // &.loaded {
+  //   opacity: 1;
+  //   transform: translateY(0);
+  // }
 }
 
 .backgroundOverlay {
@@ -24,6 +32,14 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @include media("<tablet") {
     margin-top: 40vh;
@@ -110,17 +126,31 @@
 .mediaItem {
   position: relative;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.3s ease;
   border-radius: 2px;
   overflow: hidden;
   height: 100px;
+  opacity: 0;
+  transform: translateY(10px);
+
+  .loaded & {
+    opacity: 1;
+    transform: translateY(0);
+
+    // Staggered animation for grid items
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{0.6s + ($i * 0.05s)};
+      }
+    }
+  }
 
   @include media("<tablet") {
     height: 80px;
   }
 
   &:hover {
-    // transform: scale(1.05);
+    transform: translateY(-2px);
   }
 }
 
@@ -531,11 +561,19 @@
   width: 100%;
   text-align: center;
   padding: 3rem 2rem;
-  margin-top: 28vh;
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @include media("<tablet") {
     padding: 2rem 1rem;
-    margin-top: 10vh;
+    margin-top: 1rem;
   }
 }
 

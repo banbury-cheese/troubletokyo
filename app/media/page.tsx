@@ -231,6 +231,15 @@ export default function MediaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clickedImageElement, setClickedImageElement] =
     useState<HTMLElement | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Page reveal animation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Preload images for better modal navigation performance
   useEffect(() => {
@@ -242,19 +251,21 @@ export default function MediaPage() {
       selectedMedia.fullMedia.length > 1
     ) {
       const preloadImages = () => {
-        const nextIndex = (currentImageIndex + 1) % selectedMedia.fullMedia.length;
-        const prevIndex = 
-          (currentImageIndex - 1 + selectedMedia.fullMedia.length) % selectedMedia.fullMedia.length;
-        
+        const nextIndex =
+          (currentImageIndex + 1) % selectedMedia.fullMedia.length;
+        const prevIndex =
+          (currentImageIndex - 1 + selectedMedia.fullMedia.length) %
+          selectedMedia.fullMedia.length;
+
         // Preload next image
         if (nextIndex !== currentImageIndex) {
-          const nextImg = document.createElement('img');
+          const nextImg = document.createElement("img");
           nextImg.src = selectedMedia.fullMedia[nextIndex];
         }
-        
+
         // Preload previous image
         if (prevIndex !== currentImageIndex) {
-          const prevImg = document.createElement('img');
+          const prevImg = document.createElement("img");
           prevImg.src = selectedMedia.fullMedia[prevIndex];
         }
       };
@@ -346,7 +357,7 @@ export default function MediaPage() {
   };
 
   return (
-    <div className={styles.mediaPage}>
+    <div className={`${styles.mediaPage} ${isLoaded ? styles.loaded : ""}`}>
       <MenuNav />
       <div className={styles.cameraContainer}>
         <div className={styles.camera}>
