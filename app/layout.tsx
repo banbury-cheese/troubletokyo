@@ -5,7 +5,7 @@ import { CurrencyProvider } from "@/components/cart/currency-context";
 import { getCart } from "@/lib/shopify";
 import { Toaster } from "sonner";
 import CartModal from "@/components/cart/modal/modal";
-import LaunchTimer from "@/components/LaunchTimer/LaunchTimer";
+// import LaunchTimer from "@/components/LaunchTimer/LaunchTimer";
 // import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -26,11 +26,10 @@ export default function RootLayout({
       <body className={``}>
         <CurrencyProvider>
           <CartProvider cartPromise={cart}>
-            <LaunchTimer />
+            {/* <LaunchTimer /> */}
             {children}
             <Toaster />
             <CartModal />
-            {/* <Analytics /> */}
           </CartProvider>
         </CurrencyProvider>
       </body>

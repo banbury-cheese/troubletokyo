@@ -51,7 +51,7 @@ export const DEFAULT_OPTION = "Default Title";
 
 // Launch Timer Configuration
 export const LAUNCH_TIMER_CONFIG = {
-  ENABLE_TIMER: true, // Set to false to disable the timer during development
+  ENABLE_TIMER: false, // Set to false to disable the timer during development
   LAUNCH_DATE: "2025-08-15T11:00:00-05:00", // August 15th, 2025 at 12:00 PM EST
 };
 
