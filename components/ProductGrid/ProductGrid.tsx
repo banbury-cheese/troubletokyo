@@ -41,7 +41,7 @@ function getProductPath(product: Product, basePath: string): string {
   ) {
     return `/accessories/plates/${product.handle}`;
   } else if (collectionHandles.includes("car")) {
-    return `/${product.handle}`;
+    return `/car/${product.handle}`;
   }
 
   // Fallback to tags if collections don't match
