@@ -203,6 +203,21 @@ export default async function AccessoryProductPage(props: {
               },
             ]}
           />
+        ) : isSticker && params.handle === "classic-banner" ? (
+          <ImageCarousel
+            images={[
+              {
+                id: 1,
+                src: "/images/carousel/banner/1.png",
+                alt: "Classic Banner 1",
+              },
+              {
+                id: 2,
+                src: "/images/carousel/banner/2.png",
+                alt: "Classic Banner 2",
+              },
+            ]}
+          />
         ) : isSticker ? (
           <ImageCarousel
             images={[
