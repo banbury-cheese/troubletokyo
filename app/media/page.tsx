@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styles from "./media.module.scss";
 import MenuNav from "@/components/MenuNav/MenuNav";
@@ -231,6 +231,39 @@ export default function MediaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clickedImageElement, setClickedImageElement] =
     useState<HTMLElement | null>(null);
+
+  // Preload images for better modal navigation performance
+  useEffect(() => {
+    if (
+      isModalOpen &&
+      selectedMedia &&
+      selectedMedia.type === "photo_folder" &&
+      Array.isArray(selectedMedia.fullMedia) &&
+      selectedMedia.fullMedia.length > 1
+    ) {
+      const preloadImages = () => {
+        const nextIndex = (currentImageIndex + 1) % selectedMedia.fullMedia.length;
+        const prevIndex = 
+          (currentImageIndex - 1 + selectedMedia.fullMedia.length) % selectedMedia.fullMedia.length;
+        
+        // Preload next image
+        if (nextIndex !== currentImageIndex) {
+          const nextImg = document.createElement('img');
+          nextImg.src = selectedMedia.fullMedia[nextIndex];
+        }
+        
+        // Preload previous image
+        if (prevIndex !== currentImageIndex) {
+          const prevImg = document.createElement('img');
+          prevImg.src = selectedMedia.fullMedia[prevIndex];
+        }
+      };
+
+      // Small delay to ensure main image starts loading first
+      const timeoutId = setTimeout(preloadImages, 100);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isModalOpen, selectedMedia, currentImageIndex]);
 
   const handleMediaClick = (media: MediaItem) => {
     setSelectedMedia(media);
