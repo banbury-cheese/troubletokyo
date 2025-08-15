@@ -180,8 +180,102 @@ export default function ProductGrid({ products, basePath }: ProductGridProps) {
       },
     });
 
+    // Add hover animations after cards are revealed
+    tl.call(() => {
+      productCards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        const imageContainer = cardElement.querySelector(`.${styles.productImageContainer}`);
+        const productName = cardElement.querySelector(`.${styles.productName}`);
+        const productPrice = cardElement.querySelector(`.${styles.productPrice}`);
+
+        // Mouse enter animation
+        const handleMouseEnter = () => {
+          gsap.to(cardElement, {
+            // y: -8,
+            // scale: 1.02,
+            // duration: 0.3,
+            // ease: "power2.out",
+          });
+
+          if (imageContainer) {
+            gsap.to(imageContainer, {
+              scale: 1.05,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+          }
+
+          if (productName) {
+            // gsap.to(productName, {
+            //   y: -2,
+            //   duration: 0.3,
+            //   ease: "power2.out",
+            // });
+          }
+
+          if (productPrice) {
+            // gsap.to(productPrice, {
+            //   y: -2,
+            //   duration: 0.3,
+            //   ease: "power2.out",
+            // });
+          }
+        };
+
+        // Mouse leave animation
+        const handleMouseLeave = () => {
+          gsap.to(cardElement, {
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+
+          if (imageContainer) {
+            gsap.to(imageContainer, {
+              scale: 1,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+          }
+
+          if (productName) {
+            gsap.to(productName, {
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          }
+
+          if (productPrice) {
+            gsap.to(productPrice, {
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          }
+        };
+
+        // Add event listeners
+        cardElement.addEventListener('mouseenter', handleMouseEnter);
+        cardElement.addEventListener('mouseleave', handleMouseLeave);
+
+        // Store cleanup functions
+        (cardElement as any).__cleanupHover = () => {
+          cardElement.removeEventListener('mouseenter', handleMouseEnter);
+          cardElement.removeEventListener('mouseleave', handleMouseLeave);
+        };
+      });
+    });
+
     // Cleanup function
     return () => {
+      // Clean up hover event listeners
+      productCards.forEach((card) => {
+        if ((card as any).__cleanupHover) {
+          (card as any).__cleanupHover();
+        }
+      });
       tl.kill();
     };
   }, [sortedProducts]);
