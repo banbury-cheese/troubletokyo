@@ -67,6 +67,16 @@
         display: none; // Remove 2-column lines
       }
 
+      &:nth-child(n + 1)::after {
+        content: "";
+        position: absolute;
+        bottom: -7vh;
+        left: -50vw;
+        width: 200vw;
+        height: 2px;
+        background: var(--darkRed);
+      }
+
       &:nth-child(3n + 1)::after {
         content: "";
         position: absolute;
@@ -96,6 +106,10 @@
         width: 200vw;
         height: 2px;
         background: var(--darkRed);
+      }
+
+       &:nth-child(n + 1)::after {
+       display: none;
       }
 
       &:nth-last-child(-n + 4)::after {
