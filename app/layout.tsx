@@ -6,7 +6,7 @@ import { getCart } from "@/lib/shopify";
 import { Toaster } from "sonner";
 import CartModal from "@/components/cart/modal/modal";
 import LaunchTimer from "@/components/LaunchTimer/LaunchTimer";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Trouble Tokyo",
