@@ -104,41 +104,46 @@ function getProductCategory(product: Product): number {
   );
   const tags = product.tags.map((tag) => tag.toLowerCase());
 
-  // Check collections first (more reliable)
+  // Car first
+  if (collectionHandles.includes("car")) {
+    return 0; // Car first
+  }
+
+  // Apparel next
   if (
     collectionHandles.includes("apparel") ||
     collectionHandles.includes("clothing")
   ) {
-    return 1; // Apparel first
+    return 1; // Apparel second
   } else if (
     collectionHandles.includes("plates") ||
     collectionHandles.includes("plate")
   ) {
-    return 2; // Plates second
+    return 2; // Plates third
   } else if (
     collectionHandles.includes("stickers") ||
     collectionHandles.includes("sticker")
   ) {
-    return 3; // Stickers third
-  } else if (collectionHandles.includes("car")) {
-    return 4; // Car fourth
+    return 3; // Stickers fourth
   }
 
   // Fallback to tags
-  if (
+  if (tags.includes("car")) {
+    return 0; // Car first (by tag)
+  } else if (
     tags.includes("apparel") ||
     tags.includes("clothing") ||
     tags.includes("shirt") ||
     tags.includes("hoodie")
   ) {
-    return 1; // Apparel first
+    return 1; // Apparel second
   } else if (tags.includes("plates") || tags.includes("plate")) {
-    return 2; // Plates second
+    return 2; // Plates third
   } else if (tags.includes("stickers") || tags.includes("sticker")) {
-    return 3; // Stickers third
+    return 3; // Stickers fourth
   }
 
-  return 5; // Everything else last
+  return 4; // Everything else last
 }
 
 export default function ProductGrid({ products, basePath }: ProductGridProps) {
