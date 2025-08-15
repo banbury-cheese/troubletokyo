@@ -61,9 +61,9 @@ export default function Footer({ color = "var(--white)" }: FooterProps) {
   return (
     <footer className={styles.footer} style={{ color: color }}>
       <div className={styles.footerContent}>
-        <div className={styles.footerLeft}>
+        <Link href={"/"} className={styles.footerLeft}>
           <FooterLogo color={color} />
-        </div>
+        </Link>
         <div className={styles.footerRight}>
           <Link
             href="mailto:info@trouble.tokyo"
