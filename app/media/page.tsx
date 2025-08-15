@@ -145,7 +145,7 @@ const mediaItems: MediaItem[] = [
   },
   {
     id: 9,
-    thumbnail: "/images/landingPage/media.jpg",
+    thumbnail: "/images/media/Videos/thumbnails/TroubleDriftmp4.png",
     date: "2024/07/08",
     type: "video",
     fullMedia: "/images/media/Videos/TroubleDriftmp4.mp4",
@@ -157,7 +157,7 @@ const mediaItems: MediaItem[] = [
   },
   {
     id: 10,
-    thumbnail: "/images/landingPage/apparel.jpg",
+    thumbnail: "/images/media/Videos/thumbnails/ImportREEL.png",
     date: "2024/07/09",
     type: "video",
     fullMedia: "/images/media/Videos/ImportREEL.mp4",
@@ -169,7 +169,7 @@ const mediaItems: MediaItem[] = [
   },
   {
     id: 11,
-    thumbnail: "/images/landingPage/media.jpg",
+    thumbnail: "/images/media/Videos/thumbnails/RWBGrass2.png",
     date: "2024/07/10",
     type: "video",
     fullMedia: "/images/media/Videos/RWBGrass2.mp4",
@@ -181,7 +181,7 @@ const mediaItems: MediaItem[] = [
   },
   {
     id: 12,
-    thumbnail: "/images/landingPage/media.jpg",
+    thumbnail: "/images/media/Videos/thumbnails/TamedVHS.png",
     date: "2024/07/11",
     type: "video",
     fullMedia: "/images/media/Videos/TamedVHS.mp4",
@@ -193,7 +193,7 @@ const mediaItems: MediaItem[] = [
   },
   {
     id: 13,
-    thumbnail: "/images/landingPage/media.jpg",
+    thumbnail: "/images/media/Videos/thumbnails/Troubleskaters.png",
     date: "2024/07/12",
     type: "video",
     fullMedia: "/images/media/Videos/Troubleskaters.mp4",
