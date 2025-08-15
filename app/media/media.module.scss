@@ -525,3 +525,64 @@
 //     }
 //   }
 // }
+
+// Featured section styles
+.featuredSection {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 2rem;
+  margin-top: 28vh;
+
+  @include media("<tablet") {
+    padding: 2rem 1rem;
+    margin-top: 10vh;
+  }
+}
+
+.featuredText {
+  font-family: var(--fontSecondary);
+  font-size: 1rem;
+  font-weight: 900;
+  // letter-spacing: 0.2em;
+  color: var(--red);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+
+  @include media("<tablet") {
+    font-size: 0.7rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.featuredSubtext {
+  font-family: var(--bodyFont);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--white);
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+  // text-transform: uppercase;
+  // letter-spacing: 0.1em;
+
+  @include media("<tablet") {
+    font-size: 0.6rem;
+    // line-height: 1;
+  }
+}
+
+.emailLink {
+  color: var(--white);
+  text-decoration: underline;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--brightRed);
+    text-decoration: none;
+  }
+
+  &:active {
+    color: var(--brightRed);
+  }
+}

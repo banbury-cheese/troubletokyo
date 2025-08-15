@@ -22,7 +22,8 @@ interface MediaItem {
 const mediaItems: MediaItem[] = [
   {
     id: 1,
-    thumbnail: "/images/media/Photos/2024.08.14./2024.08.14. McLaren Grass1.webp",
+    thumbnail:
+      "/images/media/Photos/2024.08.14./2024.08.14. McLaren Grass1.webp",
     date: "2024/08/14",
     type: "photo_folder",
     fullMedia: [
@@ -57,13 +58,10 @@ const mediaItems: MediaItem[] = [
     thumbnail: "/images/media/Photos/2024.10.15./Ginza Trouble1.webp",
     date: "2024/10/15",
     type: "photo_folder",
-    fullMedia: [
-      "/images/media/Photos/2024.10.15./Ginza Trouble1.webp",
-    ],
+    fullMedia: ["/images/media/Photos/2024.10.15./Ginza Trouble1.webp"],
     title: "TROUBLE IN GINZA",
     location: "GINZA, JAPAN",
-    description:
-      "Trouble 1987 930 911 posted up in Ginza.",
+    description: "Trouble 1987 930 911 posted up in Ginza.",
     photographer: "TROUBLE TOKYO TEAM",
   },
   {
@@ -127,8 +125,7 @@ const mediaItems: MediaItem[] = [
     ],
     title: "STREET DRIFTING",
     location: "OTA, JAPAN",
-    description:
-      "",
+    description: "",
     photographer: "TROUBLE TOKYO TEAM",
   },
   {
@@ -477,6 +474,18 @@ export default function MediaPage() {
           </div>
         </div>
       </div>
+
+      {/* Want to be featured section */}
+      <div className={styles.featuredSection}>
+        <p className={styles.featuredText}>WANT TO BE FEATURED?</p>
+        <p className={styles.featuredSubtext}>
+          Email us your photos with our Trouble Tokyo <br /> goods at{" "}
+          <a href="mailto:info@trouble.tokyo" className={styles.emailLink}>
+            info@trouble.tokyo
+          </a>
+        </p>
+      </div>
+
       <Footer color="var(--white)" />
 
       {/* Image Modal */}
