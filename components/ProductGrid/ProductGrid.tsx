@@ -40,6 +40,8 @@ function getProductPath(product: Product, basePath: string): string {
     collectionHandles.includes("plate")
   ) {
     return `/accessories/plates/${product.handle}`;
+  } else if (collectionHandles.includes("car")) {
+    return `/${product.handle}`;
   }
 
   // Fallback to tags if collections don't match
@@ -118,6 +120,8 @@ function getProductCategory(product: Product): number {
     collectionHandles.includes("sticker")
   ) {
     return 3; // Stickers third
+  } else if (collectionHandles.includes("car")) {
+    return 4; // Car fourth
   }
 
   // Fallback to tags
@@ -134,7 +138,7 @@ function getProductCategory(product: Product): number {
     return 3; // Stickers third
   }
 
-  return 4; // Everything else last
+  return 5; // Everything else last
 }
 
 export default function ProductGrid({ products, basePath }: ProductGridProps) {
@@ -184,9 +188,13 @@ export default function ProductGrid({ products, basePath }: ProductGridProps) {
     tl.call(() => {
       productCards.forEach((card) => {
         const cardElement = card as HTMLElement;
-        const imageContainer = cardElement.querySelector(`.${styles.productImageContainer}`);
+        const imageContainer = cardElement.querySelector(
+          `.${styles.productImageContainer}`
+        );
         const productName = cardElement.querySelector(`.${styles.productName}`);
-        const productPrice = cardElement.querySelector(`.${styles.productPrice}`);
+        const productPrice = cardElement.querySelector(
+          `.${styles.productPrice}`
+        );
 
         // Mouse enter animation
         const handleMouseEnter = () => {
@@ -257,13 +265,13 @@ export default function ProductGrid({ products, basePath }: ProductGridProps) {
         };
 
         // Add event listeners
-        cardElement.addEventListener('mouseenter', handleMouseEnter);
-        cardElement.addEventListener('mouseleave', handleMouseLeave);
+        cardElement.addEventListener("mouseenter", handleMouseEnter);
+        cardElement.addEventListener("mouseleave", handleMouseLeave);
 
         // Store cleanup functions
         (cardElement as any).__cleanupHover = () => {
-          cardElement.removeEventListener('mouseenter', handleMouseEnter);
-          cardElement.removeEventListener('mouseleave', handleMouseLeave);
+          cardElement.removeEventListener("mouseenter", handleMouseEnter);
+          cardElement.removeEventListener("mouseleave", handleMouseLeave);
         };
       });
     });
