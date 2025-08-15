@@ -41,6 +41,7 @@
   position: relative;
   text-decoration: none;
   color: inherit;
+  opacity: 0;
 
   @include media("<tablet") {
     padding: 30px;

@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./ProductGrid.module.scss";
 import type { Product } from "@/lib/shopify/types";
 import Price from "../price";
+import { gsap } from "gsap";
 
 interface ProductGridProps {
   products: Product[];
@@ -137,6 +139,7 @@ function getProductCategory(product: Product): number {
 
 export default function ProductGrid({ products, basePath }: ProductGridProps) {
   console.log("basePath:", basePath);
+  const gridRef = useRef<HTMLElement>(null);
 
   // Sort products: apparel first, then plates, then stickers, then everything else
   const sortedProducts = [...products].sort((a, b) => {
@@ -145,8 +148,46 @@ export default function ProductGrid({ products, basePath }: ProductGridProps) {
     return categoryA - categoryB;
   });
 
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const productCards = grid.querySelectorAll(`.${styles.productCard}`);
+
+    // Set initial states
+    gsap.set(productCards, {
+      opacity: 0,
+      y: 50,
+      scale: 0.9,
+    });
+
+    // Create timeline for staggered animation
+    const tl = gsap.timeline({
+      delay: 0.2,
+    });
+
+    // Animate cards with stagger
+    tl.to(productCards, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: {
+        amount: 0.8,
+        grid: "auto",
+        from: "start",
+      },
+    });
+
+    // Cleanup function
+    return () => {
+      tl.kill();
+    };
+  }, [sortedProducts]);
+
   return (
-    <main className={styles.productGrid}>
+    <main ref={gridRef} className={styles.productGrid}>
       {sortedProducts.map((product) => {
         const productPath = getProductPath(product, basePath);
         const isApparel = isApparelProduct(product);
