@@ -11,7 +11,7 @@ export default async function AllProductsPage() {
     <div className={styles.productsPage}>
       <PageHeader
         title="ALL PRODUCTS"
-        backgroundImage="/images/apparels/cover.jpg"
+        backgroundImage="/images/all/cover.png"
         backgroundAlt="All Products Background"
       />
       <ProductGrid products={allProducts} basePath="" />
