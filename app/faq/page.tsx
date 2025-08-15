@@ -23,7 +23,7 @@ const faqData: FAQSection[] = [
       {
         question: "RETURNS",
         answer:
-          "All sales are final. Please carefully review your order and verify your information prior to finalizing your purchase. There will be no returns or exchanges unless the item is damaged from defect. All shipping damages should be communicated and resolved with shipping company.",
+          "All sales are final. Please carefully review your order and verify your information prior to finalizing your purchase. There will be no returns or exchanges unless the item is damaged from defect. All shipping damages should be communicated and resolved with your respective shipping company.",
       },
       {
         question: "EXCHANGES",
@@ -33,12 +33,12 @@ const faqData: FAQSection[] = [
       {
         question: "SHIPPING",
         answer:
-          "We will only ship to the address provided upon checkout. Please verify your information prior to finalizing your purchase.\n\nTROUBLE TOKYO is not responsible for duties, taxes, or customs fees under any circumstance. Buyer is accountable for any restrictions, duties, taxes, and any other fees collected from the destination country.",
+          "We will only ship to the address provided upon checkout. Please verify your information prior to finalizing your purchase.\n\nTrouble Tokyo is not responsible for duties, taxes, or customs fees under any circumstance. Buyer is accountable for any restrictions, duties, taxes, and any other fees collected from the destination country.",
       },
       {
         question: "PAYMENTS",
         answer:
-          "We accept Visa, MasterCard, and American Express credit cards.\n\nYou agree to pay the price for the merchandise in your order at the time you submitted your order and the delivery fees for the shipping service you select.\n\nWe reserve the right to accept, decline or cancel your order for any reason.",
+          "We accept Visa, MasterCard, and American Express credit cards. Submitting your order serves as an agreement to pay the price of the merchandise and delivery fees for the shipping service. We reserve the right to accept, reject, or cancel your order.",
       },
     ],
   },
