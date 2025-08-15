@@ -321,7 +321,7 @@ export default function Home() {
       {/* Navigation Sections */}
       <div className={styles.sectionsGrid}>
         {/* Apparel Section */}
-        <Link href="/apparels" className={`${styles.section} section-link`}>
+        {/* <Link href="/apparels" className={`${styles.section} section-link`}>
           <div className={styles.sectionContent}>
             <div className={`${styles.sectionTitle} section-title h-effect`}>
               <h2 className="h-item">APPAREL</h2>
@@ -334,10 +334,10 @@ export default function Home() {
             fill
             className={styles.sectionBg}
           />
-        </Link>
+        </Link> */}
 
-        {/* Accessories Section */}
-        <Link href="/accessories" className={`${styles.section} section-link`}>
+        {/* All Section */}
+        <Link href="/products" className={`${styles.section} section-link`}>
           <div className={styles.sectionContent}>
             <div className={`${styles.sectionTitle} section-title h-effect`}>
               <h2 className="h-item">PRODUCTS</h2>
@@ -345,7 +345,7 @@ export default function Home() {
             </div>
           </div>
           <Image
-            src="/images/landingPage/accessories.jpg"
+            src="/images/landingPage/all.jpg"
             alt="Accessories section"
             fill
             className={styles.sectionBg}
