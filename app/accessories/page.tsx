@@ -12,7 +12,7 @@ const accessoryFolders = [
     name: "Car Plates",
     slug: "plates",
     image: "/images/carousel/plates/4.webp",
-    description: "Custom license plates and decorative plates",
+    description: "Custom plate frames for American/Canadian market",
   },
   {
     id: "stickers",
