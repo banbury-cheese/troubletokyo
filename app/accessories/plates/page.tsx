@@ -12,7 +12,7 @@ export default async function PlatesPage() {
     <div className={styles.platesPage}>
       <PageHeader
         title="CAR PLATES"
-        backgroundImage="/images/carousel/plates/1.webp"
+        backgroundImage="/images/carousel/plates/4.webp"
         backgroundAlt="Plates Background"
       />
       <ProductGrid products={plateItems} basePath="/accessories/plates" />
