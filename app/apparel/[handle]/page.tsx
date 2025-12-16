@@ -16,7 +16,7 @@ import { ProductProvider } from "@/components/product/product-context";
 import Header from "@/components/header/header";
 import { VariantSelector } from "@/components/variantSelector/variantSelector";
 import { AddToCart } from "@/components/cart/add-to-cart";
-import Price from "@/components/price";
+import Price from "@/components/price-with-currency";
 import SizeChartLink from "@/components/sizeChart/sizeChartLink";
 import ProductImageSwitcher from "@/components/ProductImageSwitcher";
 
@@ -120,6 +120,7 @@ export default async function ApparelProductPage(props: {
                   className={styles.productPrice}
                   amount={product.priceRange.maxVariantPrice.amount}
                   currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+                  convertCurrency={true}
                 />
                 {product.descriptionHtml ? (
                   <Prose

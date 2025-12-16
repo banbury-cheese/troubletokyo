@@ -1,10 +1,12 @@
+'use client';
+
 import clsx from 'clsx';
 import { useCurrency } from './cart/currency-context';
 
 const Price = ({
   amount,
   className,
-  currencyCode = "CAD",
+  currencyCode = "JPY",
   currencyCodeClassName,
   convertCurrency = false,
 }: {

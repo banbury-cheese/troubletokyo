@@ -14,7 +14,7 @@ import { ProductProvider } from "@/components/product/product-context";
 import Header from "@/components/header/header";
 import { VariantSelector } from "@/components/variantSelector/variantSelector";
 import { AddToCart } from "@/components/cart/add-to-cart";
-import Price from "@/components/price";
+import Price from "@/components/price-with-currency";
 
 export async function generateMetadata(props: {
   params: Promise<{ category: string; handle: string }>;
@@ -145,15 +145,14 @@ export default async function AccessoryProductPage(props: {
             <div className={styles.productDetails}>
               <Suspense>
                 <h1 className={styles.productTitle}>{product.title}</h1>
-                <p className={styles.productPrice}>
-                  <Price
-                    className={styles.priceDisplay}
-                    amount={product.priceRange.maxVariantPrice.amount}
-                    currencyCode={
-                      product.priceRange.maxVariantPrice.currencyCode
-                    }
-                  />
-                </p>
+                <Price
+                  className={styles.productPrice}
+                  amount={product.priceRange.maxVariantPrice.amount}
+                  currencyCode={
+                    product.priceRange.maxVariantPrice.currencyCode
+                  }
+                  convertCurrency={true}
+                />
 
                 {product.descriptionHtml ? (
                   <Prose

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./ProductGrid.module.scss";
 import type { Product } from "@/lib/shopify/types";
-import Price from "../price";
+import Price from "../price-with-currency";
 import { gsap } from "gsap";
 
 interface ProductGridProps {
@@ -337,6 +337,7 @@ export default function ProductGrid({ products, basePath }: ProductGridProps) {
               className={styles.productPrice}
               amount={product.priceRange.maxVariantPrice.amount}
               currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+              convertCurrency={true}
             />
             {/* </p> */}
           </Link>
