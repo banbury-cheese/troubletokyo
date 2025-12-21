@@ -1,4 +1,4 @@
-@import "../../styles/breakpoints.scss";
+@use "../../styles/breakpoints.scss" as *;
 
 .header {
   background-color: var(--red);

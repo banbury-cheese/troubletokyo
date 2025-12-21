@@ -7,8 +7,8 @@ import { isShopifyError } from "@/lib/type-guards";
 import { ensureStartsWith } from "@/lib/utils";
 import {
   revalidateTag,
-  unstable_cacheTag as cacheTag,
-  unstable_cacheLife as cacheLife,
+  cacheTag,
+  cacheLife,
 } from "next/cache";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -503,11 +503,11 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   }
 
   if (isCollectionUpdate) {
-    revalidateTag(TAGS.collections);
+    await revalidateTag(TAGS.collections, {});
   }
 
   if (isProductUpdate) {
-    revalidateTag(TAGS.products);
+    await revalidateTag(TAGS.products, {});
   }
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });

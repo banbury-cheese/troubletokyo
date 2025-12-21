@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
     inlineCss: true,
     useCache: true,
   },
-  sassOptions: {
-    additionalData: `@import "styles/breakpoints.scss";`,
-  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
